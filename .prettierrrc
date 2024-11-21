@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ],
+  "tailwindConfig": "./tailwind.config.ts",
+  "singleQuote": false,
+  "semi": true,
+  "trailingComma": "es5",
+  "arrowParens": "avoid"
+}
