@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import { FaBaby, FaHome, FaUser } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
 import { GiWeightLiftingUp } from "react-icons/gi";
@@ -9,6 +9,7 @@ import SplitText from "./SplitText";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import FadeIn from "./FadeIn";
+import Horizontal from "@/components/Horizontal";
 type AboutMeItem = {
   id: number;
   icon: ReactNode;
@@ -57,15 +58,20 @@ const aboutMeItems: AboutMeItem[] = [
 ];
 
 export default function HeroSection() {
+  const container = useRef<HTMLDivElement | null>(null);
   const [tl, setTl] = useState<gsap.core.Timeline | undefined>();
 
   useGSAP(() => {
     const tl = gsap.timeline();
     setTl(tl);
+    tl.to(container.current, { opacity: 1, duration: 0.5 });
   });
   return (
-    <section className="relative w-screen h-screen overflow-hidden">
-      <div className="w-full h-full flex flex-col   gap-4 py-16 px-4 sm:p-20 justify-center">
+    <section className="relative w-screen h-screen  mt-20 sm:mt-0">
+      <div
+        ref={container}
+        className="w-full h-full flex flex-col  gap-4 py-16 px-4 sm:p-20 justify-center opacity-0"
+      >
         <Horizontal />
         <SplitText
           tl={tl}
@@ -121,7 +127,7 @@ export default function HeroSection() {
             </h1>
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
-            {aboutMeItems.map((item) => (
+            {aboutMeItems.map((item, idx) => (
               <FadeIn
                 key={item.id}
                 tl={tl}
@@ -133,7 +139,7 @@ export default function HeroSection() {
               >
                 <div
                   key={item.id}
-                  className="bg-gray-700 p-2 sm:p-4  rounded-md shadow-md flex items-center  gap-4 "
+                  className={`${idx % 2 === 0 ? "bg-gray-600" : "bg-gray-700"} p-2 sm:p-4  rounded-md shadow-md flex items-center  gap-4`}
                 >
                   <div className="text-lg sm:text-2xl ">{item.icon}</div>
                   <div className="border-r-2 h-full" />
@@ -151,8 +157,4 @@ export default function HeroSection() {
       </div>
     </section>
   );
-}
-
-function Horizontal() {
-  return <hr className="border-t border-2 border-gray-300  w-full" />;
 }

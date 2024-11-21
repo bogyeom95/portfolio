@@ -1,11 +1,13 @@
 import Container from "./components/Container";
 import HeroSection from "./components/HeroSection/HeroSection";
+import SkillSection from "./components/SkillSection/SkillSection";
 
 export default function Home() {
   return (
     <Container>
       <Header />
       <HeroSection />
+      <SkillSection />
     </Container>
   );
 }
