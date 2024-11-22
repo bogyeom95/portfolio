@@ -8,6 +8,7 @@ import { useRef } from "react";
 import {
   animateCards,
   animateContainer,
+  animateHorizontal,
   animateSplitText,
 } from "../animations";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,17 +18,19 @@ export default function SkillSection() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const horizontalRefs = useRef<(HTMLHRElement | null)[]>([]);
   useGSAP(() => {
     const tl = gsap.timeline();
 
     tl.add(animateContainer(containerRef))
+      .add(animateHorizontal(horizontalRefs.current), 0)
       .add(animateSplitText(titleRef, { y: -30 }), 0)
       .add(animateCards(cardRefs.current));
 
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: "top top",
-      end: `+=1000`,
+      end: `+=2000`,
       animation: tl,
 
       pin: true,
@@ -40,8 +43,17 @@ export default function SkillSection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-screen     opacity-0">
-      <div className=" flex flex-col  gap-4 px-4 sm:p-20 justify-center">
+    <section
+      id={"section-skill"}
+      ref={containerRef}
+      className="relative w-screen opacity-0 "
+    >
+      <div className="flex flex-col pt-20  gap-4  px-4 sm:p-20 justify-center ">
+        <Horizontal
+          ref={(el) => {
+            if (el) horizontalRefs.current[0] = el;
+          }}
+        />
         <h1
           ref={titleRef}
           className="text-2xl sm:text-4xl lg:text-6xl text-slate-100   font-bold"
@@ -49,9 +61,19 @@ export default function SkillSection() {
           My Skills
         </h1>
 
-        <Horizontal />
+        <Horizontal
+          ref={(el) => {
+            if (el) horizontalRefs.current[1] = el;
+          }}
+        />
 
         <SkillList skills={skills} cardRefs={cardRefs} />
+
+        <Horizontal
+          ref={(el) => {
+            if (el) horizontalRefs.current[2] = el;
+          }}
+        />
       </div>
     </section>
   );

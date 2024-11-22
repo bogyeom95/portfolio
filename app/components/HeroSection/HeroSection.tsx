@@ -12,6 +12,7 @@ import CardList from "./components/CardList";
 import {
   animateCards,
   animateContainer,
+  animateHorizontal,
   animateSplitText,
 } from "../animations";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -22,11 +23,12 @@ export default function HeroSection() {
   const descriptionRef = useRef<HTMLParagraphElement | null>(null);
   const cardListHeaderRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const horizontalRefs = useRef<(HTMLHRElement | null)[]>([]);
 
   useGSAP(() => {
     const tl = gsap.timeline();
-
     tl.add(animateContainer(containerRef))
+      .add(animateHorizontal(horizontalRefs.current), 0)
       .add(animateSplitText(titleRef, { y: -30 }), 0)
       .add(
         animateSplitText(descriptionRef, {
@@ -44,7 +46,7 @@ export default function HeroSection() {
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: "-=100 top",
-      end: `+=1000`,
+      end: `+=2000`,
       animation: tl,
 
       pin: true,
@@ -57,11 +59,17 @@ export default function HeroSection() {
   }, []);
   return (
     <section
+      id="section-hero"
       ref={containerRef}
-      className="relative w-screen   mt-20 sm:mt-0 opacity-0"
+      className="relative w-screen opacity-0"
     >
-      <div className="flex flex-col  gap-4 pt-16 px-4 sm:p-20 justify-center ">
-        <Horizontal />
+      <div className="flex flex-col  gap-4  px-4 sm:p-20 justify-center ">
+        <Horizontal
+          ref={(el) => {
+            if (el) horizontalRefs.current[0] = el;
+          }}
+        />
+
         <h1
           ref={titleRef}
           className="text-2xl sm:text-4xl lg:text-6xl text-slate-100   font-bold"
@@ -70,7 +78,11 @@ export default function HeroSection() {
           <br />
           주니어 개발자 김보겸입니다.
         </h1>
-        <Horizontal />
+        <Horizontal
+          ref={(el) => {
+            if (el) horizontalRefs.current[1] = el;
+          }}
+        />
         <div
           ref={descriptionRef}
           className="text-sm sm:text-lg lg:text-xl  text-slate-300 mt-4"
@@ -78,9 +90,11 @@ export default function HeroSection() {
           복잡한 문제를 간단히 해결하는 데 집중하며, <br />
           현재 프론트엔드 개발에 깊은 관심을 가진 개발자입니다.
         </div>
-
-        <Horizontal />
-
+        <Horizontal
+          ref={(el) => {
+            if (el) horizontalRefs.current[2] = el;
+          }}
+        />
         <div className="w-full bg-gray-800 p-6 rounded-lg shadow-lg">
           <h1
             ref={cardListHeaderRef}
@@ -90,8 +104,11 @@ export default function HeroSection() {
           </h1>
           <CardList items={aboutMeItems} cardRefs={cardRefs} />
         </div>
-
-        <Horizontal />
+        <Horizontal
+          ref={(el) => {
+            if (el) horizontalRefs.current[3] = el;
+          }}
+        />
       </div>
     </section>
   );

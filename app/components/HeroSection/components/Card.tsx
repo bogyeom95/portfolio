@@ -13,7 +13,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({ item }, ref) => (
     <div className="text-lg sm:text-2xl">{item.icon}</div>
     <div className="border-r-2 h-full" />
     <div>
-      <h2 className="text-white font-semibold">{item.title}</h2>
+      <h2 className="text-white font-semibold hidden sm:block">{item.title}</h2>
       <p className="text-slate-300">{item.description}</p>
     </div>
   </div>

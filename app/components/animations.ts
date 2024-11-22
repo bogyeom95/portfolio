@@ -36,6 +36,22 @@ export function animateSplitText(
   return tl;
 }
 
+export function animateHorizontal(horizontalRefs: (HTMLHRElement | null)[]) {
+  const tl = gsap.timeline();
+
+  tl.from(
+    horizontalRefs.filter((ref) => ref !== null),
+    {
+      scaleX: 0, // x 방향으로 작게 시작
+      opacity: 0, // 완전히 투명하게 시작
+      transformOrigin: "left center", // 왼쪽에서 확장되도록 설정
+      duration: 1.5, // 애니메이션 지속 시간
+      ease: "power2.out", // 부드러운 감속 효과
+    }
+  );
+  return tl;
+}
+
 export function animateCards(cardRefs: (HTMLDivElement | null)[]) {
   const tl = gsap.timeline();
   tl.from(
