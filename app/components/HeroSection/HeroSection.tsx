@@ -1,16 +1,81 @@
 "use client";
 
-import { ReactNode, useRef, useState } from "react";
+import { ReactNode, useRef } from "react";
 import { FaBaby, FaHome, FaUser } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
 import { GiWeightLiftingUp } from "react-icons/gi";
 import { IoIosMail } from "react-icons/io";
-import SplitText from "./SplitText";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import FadeIn from "./FadeIn";
 import Horizontal from "@/components/Horizontal";
-type AboutMeItem = {
+import CardList from "./components/CardList";
+import {
+  animateCardListHeader,
+  animateCards,
+  animateContainer,
+  animateDescription,
+  animateTitle,
+} from "./animations";
+
+export default function HeroSection() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLDivElement | null>(null);
+  const descriptionRef = useRef<HTMLParagraphElement | null>(null);
+  const cardListHeaderRef = useRef<HTMLDivElement | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useGSAP(() => {
+    const tl = gsap.timeline();
+
+    tl.add(animateContainer(containerRef))
+      .add(animateTitle(titleRef))
+      .add(animateDescription(descriptionRef))
+      .add(animateCardListHeader(cardListHeaderRef))
+      .add(animateCards(cardRefs.current), "<");
+  }, []);
+  return (
+    <section className="relative w-screen h-screen  mt-20 sm:mt-0">
+      <div
+        ref={containerRef}
+        className="w-full h-full flex flex-col  gap-4 py-16 px-4 sm:p-20 justify-center opacity-0"
+      >
+        <h1
+          ref={titleRef}
+          className="text-2xl sm:text-4xl lg:text-6xl text-slate-100   font-bold"
+        >
+          안녕하세요.
+          <br />
+          주니어 개발자 김보겸입니다.
+        </h1>
+
+        <p
+          ref={descriptionRef}
+          className="text-sm sm:text-lg lg:text-xl  text-slate-300 mt-4"
+        >
+          복잡한 문제를 간단히 해결하는 데 집중하며, <br />
+          현재 프론트엔드 개발에 깊은 관심을 가진 개발자입니다.
+        </p>
+
+        <Horizontal />
+
+        <div className="w-full bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h1
+            ref={cardListHeaderRef}
+            className="text-2xl sm:text-3xl lg:text-4xl text-white font-bold text-center mb-6 border-b-2 border-slate-500 pb-2"
+          >
+            About Me
+          </h1>
+
+          <CardList items={aboutMeItems} cardRefs={cardRefs} />
+        </div>
+
+        <Horizontal />
+      </div>
+    </section>
+  );
+}
+
+export type AboutMeItem = {
   id: number;
   icon: ReactNode;
   title: string;
@@ -56,105 +121,3 @@ const aboutMeItems: AboutMeItem[] = [
     description: "웨이트트레이닝",
   },
 ];
-
-export default function HeroSection() {
-  const container = useRef<HTMLDivElement | null>(null);
-  const [tl, setTl] = useState<gsap.core.Timeline | undefined>();
-
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    setTl(tl);
-    tl.to(container.current, { opacity: 1, duration: 0.5 });
-  });
-  return (
-    <section className="relative w-screen h-screen  mt-20 sm:mt-0">
-      <div
-        ref={container}
-        className="w-full h-full flex flex-col  gap-4 py-16 px-4 sm:p-20 justify-center opacity-0"
-      >
-        <Horizontal />
-        <SplitText
-          tl={tl}
-          vars={{
-            y: "-500%",
-            duration: 0.5,
-            opacity: 0,
-            ease: "power3.inOut",
-            stagger: {
-              each: 0.05,
-              ease: "power3.inOut",
-            },
-          }}
-        >
-          <h1 className="text-2xl sm:text-4xl lg:text-6xl text-slate-100   font-bold">
-            안녕하세요.
-            <br />
-            주니어 개발자 김보겸입니다.
-          </h1>
-        </SplitText>
-        <SplitText
-          tl={tl}
-          vars={{
-            duration: 0.5,
-            opacity: 0,
-            y: "500%",
-            ease: "power3.inOut",
-            stagger: {
-              each: 0.05,
-              ease: "power3.inOut",
-            },
-          }}
-        >
-          <p className="text-sm sm:text-lg lg:text-xl  text-slate-300 mt-4">
-            복잡한 문제를 간단히 해결하는 데 집중하며, <br />
-            현재 프론트엔드 개발에 깊은 관심을 가진 개발자입니다.
-          </p>
-        </SplitText>
-        <Horizontal />
-
-        <div className="w-full bg-gray-800 p-6 rounded-lg shadow-lg">
-          <FadeIn
-            tl={tl}
-            vars={{
-              duration: 0.5,
-              opacity: 0,
-              y: "500%",
-              ease: "power3.inOut",
-            }}
-          >
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl text-white font-bold text-center mb-6 border-b-2 border-slate-500 pb-2">
-              About Me
-            </h1>
-          </FadeIn>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
-            {aboutMeItems.map((item, idx) => (
-              <FadeIn
-                key={item.id}
-                tl={tl}
-                vars={{
-                  duration: 0.3,
-                  opacity: 0,
-                  ease: "power3.inOut",
-                }}
-              >
-                <div
-                  key={item.id}
-                  className={`${idx % 2 === 0 ? "bg-gray-600" : "bg-gray-700"} p-2 sm:p-4  rounded-md shadow-md flex items-center  gap-4`}
-                >
-                  <div className="text-lg sm:text-2xl ">{item.icon}</div>
-                  <div className="border-r-2 h-full" />
-                  <div>
-                    <h2 className="text-white font-semibold">{item.title}</h2>
-                    <p className="text-slate-300">{item.description}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-
-        <Horizontal />
-      </div>
-    </section>
-  );
-}
