@@ -28,7 +28,9 @@ export default function Header() {
           </button>
         </li>
         <li>
-          <button onClick={() => scrollToSection("career")}>Career</button>
+          <button onClick={() => scrollToSection("section-career")}>
+            Careers
+          </button>
         </li>
       </div>
     </div>

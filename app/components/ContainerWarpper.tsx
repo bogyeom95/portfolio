@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import Container from "./Container";
+import CareerSection from "./CareerSection/CareerSection";
 import HeroSection from "./HeroSection/HeroSection";
 import SkillSection from "./SkillSection/SkillSection";
 
@@ -34,11 +35,15 @@ export default function ContainerWarpper() {
           career: careerRef,
         }}
       />
+
       <div ref={heroRef}>
         <HeroSection />
       </div>
       <div ref={skillRef}>
         <SkillSection />
+      </div>
+      <div ref={careerRef}>
+        <CareerSection />
       </div>
     </Container>
   );
@@ -68,7 +73,7 @@ function Header({
           <button onClick={() => scrollToSection(refs.skill)}>Skills</button>
         </li>
         <li>
-          <button onClick={() => scrollToSection(refs.career)}>Career</button>
+          <button onClick={() => scrollToSection(refs.career)}>Careers</button>
         </li>
       </div>
     </div>
