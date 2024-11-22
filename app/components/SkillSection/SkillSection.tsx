@@ -1,13 +1,70 @@
-import Horizontal from "@/components/Horizontal";
+"use client";
 
-type SkillItem = {
-  name: string; // 기술 이름
-  bg: string; // 배경색 클래스 (TailwindCSS)
-  text: string; // 텍스트 색상 클래스 (TailwindCSS)
+import Horizontal from "@/components/Horizontal";
+import SkillList from "./components/SkillList";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+import {
+  animateCards,
+  animateContainer,
+  animateSplitText,
+} from "../animations";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+export default function SkillSection() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLDivElement | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  useGSAP(() => {
+    const tl = gsap.timeline();
+
+    tl.add(animateContainer(containerRef))
+      .add(animateSplitText(titleRef, { y: -30 }), 0)
+      .add(animateCards(cardRefs.current));
+
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top top",
+      end: `+=1000`,
+      animation: tl,
+
+      pin: true,
+      markers: true,
+
+      // defaults enter leave enterBack leaveBack
+      // toggleActions: "none none none none",
+      toggleActions: "restart reverse restart reverse",
+    });
+  }, []);
+
+  return (
+    <section ref={containerRef} className="relative w-screen     opacity-0">
+      <div className=" flex flex-col  gap-4 px-4 sm:p-20 justify-center">
+        <h1
+          ref={titleRef}
+          className="text-2xl sm:text-4xl lg:text-6xl text-slate-100   font-bold"
+        >
+          My Skills
+        </h1>
+
+        <Horizontal />
+
+        <SkillList skills={skills} cardRefs={cardRefs} />
+      </div>
+    </section>
+  );
+}
+
+export type SkillItem = {
+  name: string;
+  bg: string;
+  text: string;
 };
 
-type Skills = {
-  [category: string]: SkillItem[]; // 각 카테고리는 SkillItem 배열
+export type Skills = {
+  [category: string]: SkillItem[];
 };
 
 const skills: Skills = {
@@ -49,39 +106,3 @@ const skills: Skills = {
     },
   ],
 };
-
-export default function SkillSection() {
-  return (
-    <section className="relative w-screen h-screen  mt-20 sm:mt-0">
-      <div className="w-full h-full flex flex-col   gap-4 py-16 px-4 sm:p-20 justify-center ">
-        <h1 className="text-2xl sm:text-4xl lg:text-6xl text-slate-100   font-bold">
-          My Skills
-        </h1>
-
-        <Horizontal />
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {Object.entries(skills).map(([category, items]) => (
-            <div
-              key={category}
-              className="p-4 bg-gray-800 rounded-lg shadow-lg flex flex-col"
-            >
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-100 capitalize mb-2">
-                {category}
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {items.map((item, index) => (
-                  <span
-                    key={index}
-                    className={`px-4 py-2 rounded-lg ${item.bg} ${item.text} text-sm sm:text-base`}
-                  >
-                    {item.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}

@@ -10,13 +10,12 @@ import gsap from "gsap";
 import Horizontal from "@/components/Horizontal";
 import CardList from "./components/CardList";
 import {
-  animateCardListHeader,
   animateCards,
   animateContainer,
-  animateDescription,
-  animateTitle,
-} from "./animations";
-
+  animateSplitText,
+} from "../animations";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
@@ -28,17 +27,41 @@ export default function HeroSection() {
     const tl = gsap.timeline();
 
     tl.add(animateContainer(containerRef))
-      .add(animateTitle(titleRef))
-      .add(animateDescription(descriptionRef))
-      .add(animateCardListHeader(cardListHeaderRef))
+      .add(animateSplitText(titleRef, { y: -30 }), 0)
+      .add(
+        animateSplitText(descriptionRef, {
+          y: 30,
+          stagger: {
+            each: 0.05,
+            ease: "linear",
+          },
+        }),
+        0
+      )
+      .add(animateSplitText(cardListHeaderRef, { y: 30 }))
       .add(animateCards(cardRefs.current), "<");
+
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "-=100 top",
+      end: `+=1000`,
+      animation: tl,
+
+      pin: true,
+      markers: true,
+
+      // defaults enter leave enterBack leaveBack
+      // toggleActions: "none none none none",
+      toggleActions: "restart reverse restart reverse",
+    });
   }, []);
   return (
-    <section className="relative w-screen h-screen  mt-20 sm:mt-0">
-      <div
-        ref={containerRef}
-        className="w-full h-full flex flex-col  gap-4 py-16 px-4 sm:p-20 justify-center opacity-0"
-      >
+    <section
+      ref={containerRef}
+      className="relative w-screen   mt-20 sm:mt-0 opacity-0"
+    >
+      <div className="flex flex-col  gap-4 pt-16 px-4 sm:p-20 justify-center ">
+        <Horizontal />
         <h1
           ref={titleRef}
           className="text-2xl sm:text-4xl lg:text-6xl text-slate-100   font-bold"
@@ -47,14 +70,14 @@ export default function HeroSection() {
           <br />
           주니어 개발자 김보겸입니다.
         </h1>
-
-        <p
+        <Horizontal />
+        <div
           ref={descriptionRef}
           className="text-sm sm:text-lg lg:text-xl  text-slate-300 mt-4"
         >
           복잡한 문제를 간단히 해결하는 데 집중하며, <br />
           현재 프론트엔드 개발에 깊은 관심을 가진 개발자입니다.
-        </p>
+        </div>
 
         <Horizontal />
 
@@ -65,7 +88,6 @@ export default function HeroSection() {
           >
             About Me
           </h1>
-
           <CardList items={aboutMeItems} cardRefs={cardRefs} />
         </div>
 
