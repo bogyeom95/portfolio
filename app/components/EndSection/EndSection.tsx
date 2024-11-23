@@ -12,12 +12,16 @@ export default function EndSection() {
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const titleRef = React.useRef<HTMLSpanElement | null>(null);
   const descriptionRef = React.useRef<HTMLParagraphElement | null>(null);
+  const aRef = React.useRef<HTMLAnchorElement | null>(null);
+
   useGSAP(() => {
+    const linkAnimation = gsap.timeline();
+    linkAnimation.from(aRef.current, { opacity: 0, scale: 0.5 });
+
     const tl = gsap.timeline();
-    tl.add(animateSplitText(titleRef, { duration: 1, y: -30 }), 0).add(
-      animateSplitText(descriptionRef, { duration: 0.5, y: 30 }),
-      0
-    );
+    tl.add(animateSplitText(titleRef, { duration: 1, y: -30 }), 0)
+      .add(animateSplitText(descriptionRef, { duration: 0.5, y: 30 }), 0)
+      .add(linkAnimation, 0);
 
     ScrollTrigger.create({
       trigger: containerRef.current,
@@ -50,10 +54,11 @@ export default function EndSection() {
       </div>
 
       <a
+        ref={aRef}
         href="https://github.com/bokyum"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-3 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white text-lg rounded-lg shadow-lg transform transition-all duration-300"
+        className="mt-6 flex items-center gap-3 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white text-lg rounded-lg shadow-lg "
       >
         <FaGithub size={24} />
         Visit My GitHub
