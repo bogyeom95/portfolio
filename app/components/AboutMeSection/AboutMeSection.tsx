@@ -17,7 +17,7 @@ import {
 } from "../animations";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-export default function HeroSection() {
+export default function AboutMeSection() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const descriptionRef = useRef<HTMLParagraphElement | null>(null);
@@ -45,7 +45,7 @@ export default function HeroSection() {
 
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "-=100 top",
+      start: "top top",
       end: `+=2000`,
       animation: tl,
 
@@ -58,12 +58,8 @@ export default function HeroSection() {
     });
   }, []);
   return (
-    <section
-      id="section-hero"
-      ref={containerRef}
-      className="relative w-screen opacity-0"
-    >
-      <div className="flex flex-col  gap-4  px-4 sm:p-20 justify-center ">
+    <section ref={containerRef} className="relative w-screen opacity-0">
+      <div className="flex flex-col pt-16 gap-2 sm:gap-4  px-4 sm:p-20 justify-center ">
         <Horizontal
           ref={(el) => {
             if (el) horizontalRefs.current[0] = el;
@@ -85,7 +81,7 @@ export default function HeroSection() {
         />
         <div
           ref={descriptionRef}
-          className="text-sm sm:text-lg lg:text-xl  text-slate-300 mt-4"
+          className="text-sm sm:text-lg lg:text-xl  text-slate-300"
         >
           복잡한 문제를 간단히 해결하는 데 집중하며, <br />
           현재 프론트엔드 개발에 깊은 관심을 가진 개발자입니다.

@@ -2,18 +2,19 @@
 import React, { useRef } from "react";
 import Container from "./Container";
 import CareerSection from "./CareerSection/CareerSection";
-import HeroSection from "./HeroSection/HeroSection";
+
 import SkillSection from "./SkillSection/SkillSection";
+import AboutMeSection from "./\bAboutMeSection/AboutMeSection";
 
 export default function ContainerWarpper() {
   // 각 섹션에 대한 ref 생성
-  const heroRef = useRef<HTMLDivElement>(null);
+  const aboutMeRef = useRef<HTMLDivElement>(null);
   const skillRef = useRef<HTMLDivElement>(null);
   const careerRef = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (
     ref: React.RefObject<HTMLDivElement>,
-    offset: number = 100
+    offset: number = 10
   ) => {
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
@@ -30,14 +31,14 @@ export default function ContainerWarpper() {
       <Header
         scrollToSection={scrollToSection}
         refs={{
-          hero: heroRef,
+          aboutMe: aboutMeRef,
           skill: skillRef,
           career: careerRef,
         }}
       />
 
-      <div ref={heroRef}>
-        <HeroSection />
+      <div ref={aboutMeRef}>
+        <AboutMeSection />
       </div>
       <div ref={skillRef}>
         <SkillSection />
@@ -55,7 +56,7 @@ function Header({
 }: {
   scrollToSection: (ref: React.RefObject<HTMLDivElement>) => void;
   refs: {
-    hero: React.RefObject<HTMLDivElement>;
+    aboutMe: React.RefObject<HTMLDivElement>;
     skill: React.RefObject<HTMLDivElement>;
     career: React.RefObject<HTMLDivElement>;
   };
@@ -66,15 +67,11 @@ function Header({
     origin-[0]"
     >
       <div className="flex flex-row sm:flex-row-reverse justify-between px-10 *:sm:rotate-180 p-4">
-        <li>
-          <button onClick={() => scrollToSection(refs.hero)}>About Me</button>
-        </li>
-        <li>
-          <button onClick={() => scrollToSection(refs.skill)}>Skills</button>
-        </li>
-        <li>
-          <button onClick={() => scrollToSection(refs.career)}>Careers</button>
-        </li>
+        <button onClick={() => scrollToSection(refs.aboutMe)}>About Me</button>
+
+        <button onClick={() => scrollToSection(refs.skill)}>Skills</button>
+
+        <button onClick={() => scrollToSection(refs.career)}>Careers</button>
       </div>
     </div>
   );

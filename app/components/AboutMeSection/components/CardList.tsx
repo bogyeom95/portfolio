@@ -1,5 +1,5 @@
 import Card from "./Card";
-import { AboutMeItem } from "../HeroSection";
+import { AboutMeItem } from "../AboutMeSection";
 
 interface CardListProps {
   items: AboutMeItem[];

@@ -43,12 +43,8 @@ export default function SkillSection() {
   }, []);
 
   return (
-    <section
-      id={"section-skill"}
-      ref={containerRef}
-      className="relative w-screen opacity-0 "
-    >
-      <div className="flex flex-col pt-20  gap-4  px-4 sm:p-20 justify-center ">
+    <section ref={containerRef} className="relative w-screen opacity-0 ">
+      <div className="flex flex-col pt-16  gap-2 sm:gap-4  px-4 sm:p-20 justify-center ">
         <Horizontal
           ref={(el) => {
             if (el) horizontalRefs.current[0] = el;
@@ -121,10 +117,5 @@ const skills: Skills = {
     { name: "AWS ", bg: "bg-orange-600", text: "text-white" },
     { name: "GitHub Actions", bg: "bg-purple-600", text: "text-white" },
     { name: "Docker", bg: "bg-blue-600", text: "text-white" },
-    {
-      name: "Watchtower",
-      bg: "bg-gray-600",
-      text: "text-white",
-    },
   ],
 };
