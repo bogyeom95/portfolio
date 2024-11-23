@@ -14,10 +14,8 @@ function generateAsciiBlocks(
 ): string[] {
   const blocks: string[] = [];
 
-  // 입력된 ASCII 아트를 줄 단위로 분리
   const lines = asciiArt.split("\n");
 
-  // 최대 높이를 초과하는 경우 공백으로 채우기
   while (lines.length < maxHeight) {
     lines.push(""); // 부족한 줄은 빈 줄로 추가
   }
@@ -29,20 +27,18 @@ function generateAsciiBlocks(
       : line.substring(0, maxWidth)
   );
 
-  // size * size 블록 생성
   for (let row = 0; row < maxHeight; row += size) {
     for (let col = 0; col < maxWidth; col += size) {
       let block = "";
 
-      // 현재 블록의 범위를 계산
       for (let r = row; r < row + size && r < maxHeight; r++) {
         const lineSegment = paddedLines[r]
-          .substring(col, col + size) // 블록 범위만큼 추출
+          .substring(col, col + size)
           .padEnd(size, " "); // 부족한 부분은 공백으로 채움
         block += lineSegment + "\n";
       }
 
-      blocks.push(block.trimEnd()); // 블록을 결과에 추가
+      blocks.push(block.trimEnd());
     }
   }
 
@@ -83,16 +79,15 @@ export default function HeroSection() {
         bgRefs.current,
 
         {
-          // 애니메이션 도달 상태
           duration: 1.5,
           y: 10,
           scale: 0,
           ease: "power3",
           stagger: {
             each: 0.1,
-            grid: "auto", // "auto"
+            grid: "auto",
             from: "center",
-            repeat: -1, // 무한 반복
+            repeat: -1,
             yoyo: true,
           },
         }
@@ -132,17 +127,17 @@ export default function HeroSection() {
       {/* ASCII 배경 */}
       <div
         className="absolute bottom-0  text-gray-500 whitespace-pre
-    text-[8px] sm:text-[12px] font-mono"
+    text-[8px] md:text-[10px] font-mono"
         style={{
           display: "grid",
-          gridTemplateColumns: `repeat(${72 / 3}, auto)`, // 블록 열 개수
-          maxWidth: "72ch", // 부모의 최대 너비 (75 문자 기준)
-          maxHeight: "72em", // 부모의 최대 높이
-          overflow: "hidden", // 초과 내용 숨기기
+          gridTemplateColumns: `repeat(${100 / 5}, auto)`, // 블록 열 개수
+          maxWidth: "100ch",
+          maxHeight: "75em",
+          overflow: "hidden",
           pointerEvents: "none", // 상호작용 방지
         }}
       >
-        {generateAsciiBlocks(ascii, 3, 72, 72).map((block, index) => (
+        {generateAsciiBlocks(ascii, 5, 100, 75).map((block, index) => (
           <div
             ref={(el) => {
               if (el) bgRefs.current[index] = el;
