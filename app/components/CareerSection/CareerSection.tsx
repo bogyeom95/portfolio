@@ -44,7 +44,7 @@ export default function CareerSection() {
         duration: 1,
       }),
       toggleClass: "active",
-      markers: true,
+      // markers: true,
       toggleActions: "restart reverse restart reverse",
     });
   }, []);

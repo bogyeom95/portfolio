@@ -4,10 +4,9 @@ import Container from "./Container";
 import CareerSection from "./CareerSection/CareerSection";
 
 import SkillSection from "./SkillSection/SkillSection";
-import AboutMeSection from "./\bAboutMeSection/AboutMeSection";
+import AboutMeSection from "./AboutMeSection/AboutMeSection";
 
 export default function ContainerWarpper() {
-  // 각 섹션에 대한 ref 생성
   const aboutMeRef = useRef<HTMLDivElement>(null);
   const skillRef = useRef<HTMLDivElement>(null);
   const careerRef = useRef<HTMLDivElement>(null);

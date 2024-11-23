@@ -34,7 +34,7 @@ export default function SkillSection() {
       animation: tl,
 
       pin: true,
-      markers: true,
+      // markers: true,
 
       // defaults enter leave enterBack leaveBack
       // toggleActions: "none none none none",
