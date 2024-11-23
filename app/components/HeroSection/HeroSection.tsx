@@ -14,15 +14,12 @@ export default function HeroSection() {
   const bgRefs = React.useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(() => {
+    const tl = gsap.timeline();
     if (titleRef.current) {
-      const titleAnimation = gsap.timeline();
-
+      const titleAnimation = gsap.timeline({ repeat: -1 });
       const titleSplitText = new SplitType(titleRef.current, {
         types: "chars",
       });
-
-      console.log(titleSplitText);
-
       titleAnimation.from(titleSplitText.chars, {
         y: gsap.utils.wrap([-30, 30]),
         opacity: 0,
@@ -33,22 +30,56 @@ export default function HeroSection() {
           from: "center",
         },
       });
+      titleAnimation.to(titleSplitText.chars, {
+        y: gsap.utils.wrap([-30, 30]),
+        opacity: 0,
+        x: gsap.utils.distribute({
+          base: -30,
+          amount: 30,
+        }),
+        scale: 2.0,
+        delay: 3,
+        stagger: {
+          each: 0.1,
+          ease: "power3.inOut",
+          from: "center",
+        },
+      });
+      tl.add(titleAnimation, 0);
     }
 
     if (bgRefs.current) {
-      const bgAnimation = gsap.timeline();
+      tl.from(
+        bgRefs.current,
+        {
+          y: gsap.utils.wrap([-30, 30]),
+          opacity: 0,
+          filter: "blur(3px)",
 
-      bgAnimation.from(bgRefs.current, {
-        y: gsap.utils.wrap([-30, 30]),
-        opacity: 0,
-        filter: "blur(10px)",
-        scale: 2.0,
-        stagger: {
-          each: 0.05,
-          from: "end",
+          ease: "power3.inOut",
+          stagger: {
+            each: 0.05,
+            from: "start",
+            repeat: -1,
+
+            repeatDelay: 3,
+          },
         },
-      });
+        0
+      );
     }
+
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top center",
+      end: "bottom center",
+
+      markers: true,
+      animation: tl,
+
+      // defaults enter leave enterBack leaveBack
+      toggleActions: "restart pause restart pause",
+    });
   });
 
   return (
@@ -68,8 +99,8 @@ export default function HeroSection() {
 
       {/* ASCII 배경 */}
       <div
-        className="absolute bottom-0 left-0 right-0 text-gray-500 whitespace-pre opacity-30
-      text-[8px] sm:text-[12px]"
+        className="absolute bottom-0 left-0 right-0 text-gray-700 whitespace-pre
+      text-[8px] sm:text-[14px]"
         style={{
           fontFamily: "monospace",
           lineHeight: "1.2",
