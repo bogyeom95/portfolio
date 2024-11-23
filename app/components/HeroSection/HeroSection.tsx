@@ -50,7 +50,10 @@ export default function HeroSection() {
   });
 
   return (
-    <section ref={containerRef} className=" w-screen opacity-0 ">
+    <section
+      ref={containerRef}
+      className=" w-screen opacity-0  bg-gradient-to-b from-slate-900 via-black to-slate-900"
+    >
       <div className="relative z-10 flex items-center justify-center w-full h-screen flex-col gap-4 text-white ">
         <span
           ref={titleRef}
