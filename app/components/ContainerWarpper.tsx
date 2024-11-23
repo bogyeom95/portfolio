@@ -5,6 +5,7 @@ import CareerSection from "./CareerSection/CareerSection";
 
 import SkillSection from "./SkillSection/SkillSection";
 import AboutMeSection from "./AboutMeSection/AboutMeSection";
+import HeroSection from "./HeroSection/HeroSection";
 
 export default function ContainerWarpper() {
   const aboutMeRef = useRef<HTMLDivElement>(null);
@@ -35,6 +36,8 @@ export default function ContainerWarpper() {
           career: careerRef,
         }}
       />
+
+      <HeroSection />
 
       <div ref={aboutMeRef}>
         <AboutMeSection />
