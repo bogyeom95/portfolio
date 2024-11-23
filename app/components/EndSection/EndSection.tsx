@@ -28,7 +28,7 @@ export default function EndSection() {
       start: "top top",
       end: "bottom 20%",
       animation: tl,
-      markers: true,
+      // markers: true,
       toggleActions: "restart reverse restart reverse",
     });
   });
