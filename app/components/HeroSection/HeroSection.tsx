@@ -14,6 +14,7 @@ export default function HeroSection() {
   const bgRefs = React.useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(() => {
+    gsap.set(containerRef.current, { opacity: 1 });
     if (titleRef.current) {
       const titleAnimation = gsap.timeline();
       const titleSplitText = new SplitType(titleRef.current, {
@@ -49,18 +50,15 @@ export default function HeroSection() {
   });
 
   return (
-    <section
-      ref={containerRef}
-      className="relative w-screen h-screen flex flex-col justify-between"
-    >
+    <section ref={containerRef} className=" w-screen opacity-0 ">
       <div className="relative z-10 flex items-center justify-center w-full h-screen flex-col gap-4 text-white ">
         <span
           ref={titleRef}
-          className="text-5xl sm:text-7xl lg:text-9xl font-extrabold leading-tight tracking-tight text-white drop-shadow-lg"
+          className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white "
         >
           BOGYEOM
           <br />
-          <span className="text-5xl sm:text-7xl lg:text-9xl font-extrabold leading-tight tracking-tight text-white drop-shadow-lg">
+          <span className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white ">
             PORTFOLIO
           </span>
         </span>

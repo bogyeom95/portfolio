@@ -58,7 +58,7 @@ export default function AboutMeSection() {
     });
   }, []);
   return (
-    <section ref={containerRef} className="relative w-screen opacity-0">
+    <section ref={containerRef} className=" w-screen opacity-0">
       <div className="flex flex-col pt-16 gap-2 sm:gap-4  px-4 sm:p-20 justify-center ">
         <Horizontal
           ref={(el) => {

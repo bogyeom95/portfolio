@@ -26,10 +26,6 @@ export default function CareerSection() {
       end: "bottom 20%",
       animation: tl,
 
-      // markers: true,
-
-      // defaults enter leave enterBack leaveBack
-      // toggleActions: "none none none none",
       toggleActions: "restart reverse restart reverse",
     });
 
@@ -50,7 +46,7 @@ export default function CareerSection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-screen opacity-0">
+    <section ref={containerRef} className=" w-screen opacity-0">
       <div className="flex flex-col pt-20  gap-4  px-4 sm:p-20 justify-center">
         <Horizontal
           ref={(el) => {
