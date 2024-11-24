@@ -82,7 +82,6 @@ export default function SkillSection() {
         width={200}
         blockSize={10}
         refs={bgRefs}
-        xPosition="left-0"
       />
     </section>
   );
