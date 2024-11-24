@@ -16,7 +16,6 @@ export default function HeroSection() {
   const scrollHintRef = React.useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
-    gsap.set(containerRef.current, { opacity: 1 });
     if (titleRef.current) {
       const titleAnimation = gsap.timeline();
       const titleSplitText = new SplitType(titleRef.current, {
@@ -72,7 +71,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className=" w-screen opacity-0  bg-gradient-to-b from-slate-900 via-black to-slate-900"
+      className=" w-screen bg-gradient-to-b from-slate-900 via-black to-slate-900"
     >
       <div className="relative z-10 flex items-center justify-center w-full h-screen flex-col gap-4 text-white ">
         <span
@@ -98,7 +97,7 @@ export default function HeroSection() {
 
       <div
         ref={scrollHintRef}
-        className="absolute bottom-10 text-center text-white animate-bounce"
+        className="absolute bottom-16 text-center text-white"
         style={{
           left: "50%",
           transform: "translate(-50%, -50%)",
@@ -108,9 +107,9 @@ export default function HeroSection() {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth="4"
+          strokeWidth="6"
           stroke="currentColor"
-          className="w-6 h-6 mt-2"
+          className="w-6 h-6  animate-bounce"
         >
           <path
             strokeLinecap="round"

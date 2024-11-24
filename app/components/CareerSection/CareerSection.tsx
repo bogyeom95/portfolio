@@ -1,7 +1,7 @@
 "use client";
 import Horizontal from "@/components/Horizontal";
 import { useRef } from "react";
-import { animateContainer, animateHorizontal } from "../animations";
+import { animateHorizontal } from "../animations";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -15,10 +15,7 @@ export default function CareerSection() {
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    tl.add(animateContainer(containerRef)).add(
-      animateHorizontal(horizontalRefs.current),
-      0
-    );
+    tl.add(animateHorizontal(horizontalRefs.current), 0);
 
     ScrollTrigger.create({
       trigger: containerRef.current,
@@ -46,7 +43,7 @@ export default function CareerSection() {
   }, []);
 
   return (
-    <section ref={containerRef} className=" w-screen opacity-0">
+    <section ref={containerRef} className=" w-screen">
       <div className="flex flex-col pt-20  gap-4  px-4 sm:p-20 justify-center">
         <Horizontal
           ref={(el) => {

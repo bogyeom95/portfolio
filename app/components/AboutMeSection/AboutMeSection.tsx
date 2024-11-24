@@ -11,7 +11,6 @@ import Horizontal from "@/components/Horizontal";
 import CardList from "./components/CardList";
 import {
   animateCards,
-  animateContainer,
   animateHorizontal,
   animateSplitText,
 } from "../animations";
@@ -27,8 +26,7 @@ export default function AboutMeSection() {
 
   useGSAP(() => {
     const tl = gsap.timeline();
-    tl.add(animateContainer(containerRef))
-      .add(animateHorizontal(horizontalRefs.current), 0)
+    tl.add(animateHorizontal(horizontalRefs.current), 0)
       .add(animateSplitText(titleRef, { y: -30 }), 0)
       .add(
         animateSplitText(descriptionRef, {
@@ -54,7 +52,7 @@ export default function AboutMeSection() {
     });
   }, []);
   return (
-    <section ref={containerRef} className=" w-screen opacity-0">
+    <section ref={containerRef} className=" w-screen">
       <div className="flex flex-col pt-16 gap-2 sm:gap-4  px-4 sm:p-20 justify-center ">
         <Horizontal
           ref={(el) => {

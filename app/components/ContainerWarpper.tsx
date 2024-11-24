@@ -37,6 +37,7 @@ export default function ContainerWarpper() {
           career: careerRef,
         }}
       />
+
       <HeroSection />
 
       <div ref={aboutMeRef} />

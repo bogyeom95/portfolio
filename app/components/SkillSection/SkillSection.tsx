@@ -8,7 +8,6 @@ import { useRef } from "react";
 import {
   animateAsciiBG,
   animateCards,
-  animateContainer,
   animateHorizontal,
   animateSplitText,
 } from "../animations";
@@ -27,8 +26,7 @@ export default function SkillSection() {
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    tl.add(animateContainer(containerRef))
-      .add(animateHorizontal(horizontalRefs.current), 0)
+    tl.add(animateHorizontal(horizontalRefs.current), 0)
       .add(animateSplitText(titleRef, { y: -30 }), 0)
       .add(animateCards(cardRefs.current))
       .add(animateAsciiBG(bgRefs), 0);
@@ -44,11 +42,8 @@ export default function SkillSection() {
   }, []);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative h-screen w-screen opacity-0 "
-    >
-      <div className="z-10 h-full relative flex flex-col pt-16  gap-2 sm:gap-4  px-4 sm:p-20 justify-center  ">
+    <section ref={containerRef} className="relative h-screen w-screen  ">
+      <div className="z-10 h-full relative flex flex-col pt-16  gap-2 sm:gap-4  px-4 sm:p-20   ">
         <Horizontal
           ref={(el) => {
             if (el) horizontalRefs.current[0] = el;
