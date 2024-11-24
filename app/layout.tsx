@@ -11,8 +11,8 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: {
-    template: "My Portfolio | %s",
-    default: "My Portfolio",
+    template: "Bogyeom Portfolio | %s",
+    default: "Bogyeom Portfolio",
   },
   description: "It Just My Portfolio",
 };

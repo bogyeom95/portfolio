@@ -4,9 +4,13 @@ import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { animateAsciiBG, animateSplitText } from "../animations";
+import {
+  animateAsciiBG,
+  animateContainer,
+  animateSplitText,
+} from "../animations";
 import { FaGithub } from "react-icons/fa";
-import AsciiBackground from "../AsciiArt/AsciiBackground";
+import AsciiBackground from "../AsciiBackground";
 import { ascii } from "./ascii";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,7 +26,8 @@ export default function EndSection() {
     linkAnimation.from(aRef.current, { opacity: 0, scale: 0.5 });
 
     const tl = gsap.timeline();
-    tl.add(animateSplitText(titleRef, { duration: 1, y: -30 }), 0)
+    tl.add(animateContainer(containerRef))
+      .add(animateSplitText(titleRef, { duration: 1, y: -30 }), 0)
       .add(animateSplitText(descriptionRef, { duration: 0.5, y: 30 }), 0)
       .add(linkAnimation, 0)
       .add(animateAsciiBG(bgRefs), 0);
@@ -41,7 +46,7 @@ export default function EndSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-screen h-screen bg-gradient-to-b from-slate-900 via-black to-slate-900 flex items-center justify-center "
+      className="relative w-screen h-screen bg-gradient-to-b from-slate-900 via-black to-slate-900 flex items-center justify-center opacity-0"
     >
       <div className="text-center relative z-10">
         <span

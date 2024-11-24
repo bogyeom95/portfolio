@@ -49,6 +49,7 @@ export default function AboutMeSection() {
       start: "top center",
       end: "bottom center",
       animation: tl,
+
       toggleActions: "restart reverse restart reverse",
     });
   }, []);

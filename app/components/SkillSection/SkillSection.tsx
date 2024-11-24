@@ -13,7 +13,7 @@ import {
   animateSplitText,
 } from "../animations";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AsciiBackground from "../AsciiArt/AsciiBackground";
+import AsciiBackground from "../AsciiBackground";
 import { ascii } from "./ascii";
 gsap.registerPlugin(ScrollTrigger);
 
