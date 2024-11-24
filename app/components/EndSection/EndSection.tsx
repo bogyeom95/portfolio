@@ -71,6 +71,7 @@ export default function EndSection() {
         width={200}
         blockSize={10}
         refs={bgRefs}
+        animate={true}
       />
     </section>
   );

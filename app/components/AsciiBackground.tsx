@@ -1,5 +1,6 @@
 "use client";
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 function generateAsciiBlocks(
   asciiArt: string,
   size: number,
@@ -47,6 +48,7 @@ function AsciiBackground({
   blockSize,
   refs,
   xPosition = "right-0",
+  animate = false,
 }: {
   ascii: string;
 
@@ -55,16 +57,89 @@ function AsciiBackground({
   blockSize: number;
   refs: React.MutableRefObject<(HTMLDivElement | null)[]>;
   xPosition?: string;
+  animate?: boolean;
 }) {
+  const { contextSafe } = useGSAP();
+
+  const cols = Math.ceil(width / blockSize);
+  const rows = Math.ceil(height / blockSize);
+
+  const news = [
+    { dx: 0, dy: -1 },
+    { dx: -1, dy: 0 },
+    { dx: 1, dy: 0 },
+    { dx: 0, dy: 1 },
+  ];
+
+  const cross = [
+    { dx: -1, dy: -1 },
+    { dx: 1, dy: -1 },
+    { dx: -1, dy: 1 },
+    { dx: 1, dy: 1 },
+  ];
+
+  const getIndex = (row: number, col: number) =>
+    row >= 0 && row < rows && col >= 0 && col < cols ? row * cols + col : -1;
+
+  const handleMouseOver = contextSafe((index: number) => {
+    const row = Math.floor(index / cols);
+    const col = index % cols;
+
+    const affectedNewsIndices = news
+      .map(({ dx, dy }) => getIndex(row + dy, col + dx))
+      .filter((i) => i !== -1);
+
+    const affectedCrossIndices = cross
+      .map(({ dx, dy }) => getIndex(row + dy, col + dx))
+      .filter((i) => i !== -1);
+
+    [...affectedNewsIndices, ...affectedCrossIndices].forEach((i) => {
+      gsap.to(refs.current[i], {
+        scale: 1.1,
+        duration: 1,
+        color: "#9ca3af",
+        ease: "back.out(3)",
+      });
+    });
+
+    gsap.to(refs.current[index], {
+      scale: 1.2,
+      duration: 1,
+      color: "#d1d5db",
+      ease: "back.out(3)",
+    });
+  });
+
+  const handleMouseLeave = contextSafe((index: number) => {
+    const row = Math.floor(index / cols);
+    const col = index % cols;
+
+    const affectedNewsIndices = news
+      .map(({ dx, dy }) => getIndex(row + dy, col + dx))
+      .filter((i) => i !== -1);
+
+    const affectedCrossIndices = cross
+      .map(({ dx, dy }) => getIndex(row + dy, col + dx))
+      .filter((i) => i !== -1);
+
+    [index, ...affectedCrossIndices, ...affectedNewsIndices].forEach((i) => {
+      gsap.to(refs.current[i], {
+        scale: 1,
+        duration: 1,
+        color: "#6b7280",
+        ease: "back.out(3)",
+      });
+    });
+  });
+
   return (
     <div
-      className={`absolute max-w-[100vw] max-h-[100vh]  bottom-0 ${xPosition} text-gray-500 whitespace-pre text-[3px] md:text-[5px]  overflow-hidden`}
+      className={`absolute max-w-[100vw] max-h-[100vh]  bottom-0 ${xPosition} cursor-pointer ${animate ? "" : "pointer-events-none"}  text-gray-500 whitespace-pre text-[5px]   md:text-[7px] leading-[5px] md:leading-[7px]  overflow-hidden`}
       style={{
         display: "grid",
         gridTemplateColumns: `repeat(${width / blockSize}, auto)`, // 블록 열 개수
         fontFamily: "monospace",
         overflow: "hidden",
-        pointerEvents: "none", // 상호작용 방지
       }}
     >
       {generateAsciiBlocks(ascii, blockSize, height, width).map(
@@ -74,6 +149,12 @@ function AsciiBackground({
               if (el) refs.current[index] = el;
             }}
             key={index}
+            onMouseOver={() => {
+              if (animate) handleMouseOver(index);
+            }}
+            onMouseLeave={() => {
+              if (animate) handleMouseLeave(index);
+            }}
           >
             {block}
           </div>
