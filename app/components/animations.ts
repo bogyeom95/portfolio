@@ -1,4 +1,3 @@
-// animations.ts
 import gsap from "gsap";
 import SplitType from "split-type";
 
@@ -28,10 +27,6 @@ export function animateSplitText(
       ...defaultVars,
       ...vars,
     });
-    // 애니메이션 완료 후 분할된 텍스트를 원래대로 복구하려면 아래 주석을 해제하세요.
-    // tl.eventCallback("onComplete", () => {
-    //   splitElement.revert();
-    // });
   }
   return tl;
 }
@@ -42,11 +37,10 @@ export function animateHorizontal(horizontalRefs: (HTMLHRElement | null)[]) {
   tl.from(
     horizontalRefs.filter((ref) => ref !== null),
     {
-      scaleX: 0, // x 방향으로 작게 시작
-      opacity: 0, // 완전히 투명하게 시작
-      transformOrigin: "left center", // 왼쪽에서 확장되도록 설정
-      duration: 1.5, // 애니메이션 지속 시간
-      ease: "power2.out", // 부드러운 감속 효과
+      scaleX: 0,
+      opacity: 0,
+      transformOrigin: "left center",
+      duration: 1.5,
     }
   );
   return tl;
@@ -66,5 +60,29 @@ export function animateCards(cardRefs: (HTMLDivElement | null)[]) {
       },
     }
   );
+  return tl;
+}
+
+export function animateAsciiBG(
+  refs: React.MutableRefObject<(HTMLDivElement | null)[]>,
+  vars?: gsap.TweenVars
+) {
+  const defaultVars: gsap.TweenVars = {
+    scale: 0.1,
+    opacity: 0,
+    rotation: 45,
+    ease: "back.out(2)",
+    stagger: {
+      each: 0.01,
+    },
+  };
+
+  const tl = gsap.timeline();
+
+  tl.from(refs.current, {
+    ...defaultVars,
+    ...vars,
+  });
+
   return tl;
 }

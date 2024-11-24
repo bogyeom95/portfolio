@@ -4,29 +4,11 @@ import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { animateSplitText } from "../animations";
+import { animateAsciiBG, animateSplitText } from "../animations";
 import { FaGithub } from "react-icons/fa";
 import AsciiBackground from "../AsciiArt/AsciiBackground";
 import { ascii } from "./ascii";
 gsap.registerPlugin(ScrollTrigger);
-
-const bgAnimation = (
-  refs: React.MutableRefObject<(HTMLDivElement | null)[]>
-) => {
-  const tl = gsap.timeline();
-
-  tl.from(refs.current, {
-    scale: 0.1,
-    opacity: 0,
-    rotation: 45,
-    ease: "back.out(2)",
-    stagger: {
-      each: 0.01,
-    },
-  });
-
-  return tl;
-};
 
 export default function EndSection() {
   const containerRef = React.useRef<HTMLDivElement | null>(null);
@@ -43,14 +25,13 @@ export default function EndSection() {
     tl.add(animateSplitText(titleRef, { duration: 1, y: -30 }), 0)
       .add(animateSplitText(descriptionRef, { duration: 0.5, y: 30 }), 0)
       .add(linkAnimation, 0)
-      .add(bgAnimation(bgRefs), 0);
+      .add(animateAsciiBG(bgRefs), 0);
 
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top top",
-
+      start: "top center",
       animation: tl,
-      markers: true,
+
       toggleActions: "restart reverse restart reverse",
     });
 

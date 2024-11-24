@@ -38,7 +38,7 @@ function generateAsciiBlocks(
 
   return blocks;
 }
-// AsciiBackground 컴포넌트
+
 function AsciiBackground({
   ascii,
 

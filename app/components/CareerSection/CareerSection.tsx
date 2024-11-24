@@ -31,16 +31,16 @@ export default function CareerSection() {
 
     ScrollTrigger.create({
       trigger: cardWrapperRef.current,
-      start: "top 80%",
-      end: "bottom 20%",
+      start: "top center",
+      end: "bottom center",
+      markers: true,
       animation: gsap.from(cardRefs.current, {
         opacity: 0,
         y: 30,
         stagger: 0.2,
         duration: 1,
       }),
-      toggleClass: "active",
-      // markers: true,
+
       toggleActions: "restart reverse restart reverse",
     });
   }, []);

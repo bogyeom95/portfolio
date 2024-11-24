@@ -33,8 +33,9 @@ export default function AboutMeSection() {
       .add(
         animateSplitText(descriptionRef, {
           y: 30,
+          duration: 0.3,
           stagger: {
-            each: 0.05,
+            each: 0.03,
             ease: "linear",
           },
         }),
@@ -45,15 +46,9 @@ export default function AboutMeSection() {
 
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top top",
-      end: `+=2000`,
+      start: "top center",
+      end: "bottom center",
       animation: tl,
-
-      pin: true,
-      // markers: true,
-
-      // defaults enter leave enterBack leaveBack
-      // toggleActions: "none none none none",
       toggleActions: "restart reverse restart reverse",
     });
   }, []);

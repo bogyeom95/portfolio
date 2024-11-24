@@ -22,7 +22,7 @@ export default function ContainerWarpper() {
       const scrollTop = window.scrollY + rect.top + offset; // 현재 스크롤 위치 + 섹션 위치 - 오프셋
       window.scrollTo({
         top: scrollTop,
-        behavior: "smooth", // 부드러운 스크롤
+        behavior: "smooth",
       });
     }
   };
@@ -51,7 +51,7 @@ export default function ContainerWarpper() {
     </Container>
   );
 }
-// Header 컴포넌트
+
 function Header({
   scrollToSection,
   refs,

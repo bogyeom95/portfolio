@@ -6,12 +6,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AsciiBackground from "../AsciiArt/AsciiBackground";
 import SplitType from "split-type";
 import { ascii } from "./ascii";
+import { animateAsciiBG } from "../animations";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const titleRef = React.useRef<HTMLDivElement | null>(null);
   const bgRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+  const scrollHintRef = React.useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
     gsap.set(containerRef.current, { opacity: 1 });
@@ -36,12 +38,12 @@ export default function HeroSection() {
       trigger: containerRef.current,
       start: "top top",
       end: "+=2000",
-      animation: gsap.from(bgRefs.current, {
+      animation: animateAsciiBG(bgRefs, {
         scale: 0,
         opacity: 0,
         rotation: 30,
-
         ease: "back.out(1)",
+
         stagger: {
           each: 0.1,
           from: "end",
@@ -49,6 +51,21 @@ export default function HeroSection() {
       }),
       pin: true,
       scrub: true,
+      onUpdate: (self) => {
+        if (scrollHintRef.current) {
+          if (self.progress > 0.8) {
+            gsap.to(scrollHintRef.current, {
+              opacity: 0,
+              duration: 0.5,
+            });
+          } else {
+            gsap.to(scrollHintRef.current, {
+              opacity: 1,
+              duration: 0.5,
+            });
+          }
+        }
+      },
     });
   });
 
@@ -77,6 +94,30 @@ export default function HeroSection() {
         blockSize={10}
         refs={bgRefs}
       />
+
+      <div
+        ref={scrollHintRef}
+        className="absolute bottom-5 text-center text-white animate-bounce"
+        style={{
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="4"
+          stroke="currentColor"
+          className="w-6 h-6 mt-2"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </div>
     </section>
   );
 }

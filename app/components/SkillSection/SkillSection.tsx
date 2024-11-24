@@ -6,12 +6,15 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import {
+  animateAsciiBG,
   animateCards,
   animateContainer,
   animateHorizontal,
   animateSplitText,
 } from "../animations";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AsciiBackground from "../AsciiArt/AsciiBackground";
+import { ascii } from "./ascii";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function SkillSection() {
@@ -19,32 +22,33 @@ export default function SkillSection() {
   const titleRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const horizontalRefs = useRef<(HTMLHRElement | null)[]>([]);
+  const bgRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   useGSAP(() => {
     const tl = gsap.timeline();
 
     tl.add(animateContainer(containerRef))
       .add(animateHorizontal(horizontalRefs.current), 0)
       .add(animateSplitText(titleRef, { y: -30 }), 0)
-      .add(animateCards(cardRefs.current));
+      .add(animateCards(cardRefs.current))
+      .add(animateAsciiBG(bgRefs), 0);
 
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top top",
-      end: `+=2000`,
+      start: "top center",
+      end: "bottom center",
       animation: tl,
 
-      pin: true,
-      // markers: true,
-
-      // defaults enter leave enterBack leaveBack
-      // toggleActions: "none none none none",
       toggleActions: "restart reverse restart reverse",
     });
   }, []);
 
   return (
-    <section ref={containerRef} className="w-screen opacity-0 ">
-      <div className="flex flex-col pt-16  gap-2 sm:gap-4  px-4 sm:p-20 justify-center ">
+    <section
+      ref={containerRef}
+      className="relative h-screen w-screen opacity-0 "
+    >
+      <div className="z-10 relative flex flex-col pt-16  gap-2 sm:gap-4  px-4 sm:p-20 justify-center ">
         <Horizontal
           ref={(el) => {
             if (el) horizontalRefs.current[0] = el;
@@ -71,6 +75,15 @@ export default function SkillSection() {
           }}
         />
       </div>
+
+      <AsciiBackground
+        ascii={ascii}
+        height={100}
+        width={200}
+        blockSize={10}
+        refs={bgRefs}
+        xPosition="left-0"
+      />
     </section>
   );
 }
