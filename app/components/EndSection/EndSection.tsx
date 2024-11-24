@@ -6,13 +6,34 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { animateSplitText } from "../animations";
 import { FaGithub } from "react-icons/fa";
+import AsciiBackground from "../AsciiArt/AsciiBackground";
+import { ascii } from "./ascii";
 gsap.registerPlugin(ScrollTrigger);
+
+const bgAnimation = (
+  refs: React.MutableRefObject<(HTMLDivElement | null)[]>
+) => {
+  const tl = gsap.timeline();
+
+  tl.from(refs.current, {
+    scale: 0.1,
+    opacity: 0,
+    rotation: 45,
+    ease: "back.out(2)",
+    stagger: {
+      each: 0.01,
+    },
+  });
+
+  return tl;
+};
 
 export default function EndSection() {
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const titleRef = React.useRef<HTMLSpanElement | null>(null);
   const descriptionRef = React.useRef<HTMLParagraphElement | null>(null);
   const aRef = React.useRef<HTMLAnchorElement | null>(null);
+  const bgRefs = React.useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(() => {
     const linkAnimation = gsap.timeline();
@@ -21,48 +42,55 @@ export default function EndSection() {
     const tl = gsap.timeline();
     tl.add(animateSplitText(titleRef, { duration: 1, y: -30 }), 0)
       .add(animateSplitText(descriptionRef, { duration: 0.5, y: 30 }), 0)
-      .add(linkAnimation, 0);
+      .add(linkAnimation, 0)
+      .add(bgAnimation(bgRefs), 0);
 
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: "top top",
-      end: "bottom 20%",
+
       animation: tl,
-      // markers: true,
+      markers: true,
       toggleActions: "restart reverse restart reverse",
     });
+
+    console.log(ScrollTrigger.getAll().length);
   });
 
   return (
     <section
       ref={containerRef}
-      className=" w-screen h-screen bg-gradient-to-b from-slate-900 via-black to-slate-900 flex items-center justify-center flex-col gap-6 overflow-hidden"
+      className="relative w-screen h-screen bg-gradient-to-b from-slate-900 via-black to-slate-900 flex items-center justify-center "
     >
-      <div className="relative z-10 text-center">
+      <div className="text-center relative z-10">
         <span
           ref={titleRef}
           className="text-5xl sm:text-7xl lg:text-9xl font-extrabold text-white"
         >
           End
         </span>
-        <p
-          ref={descriptionRef}
-          className="mt-4 text-gray-400 text-lg sm:text-2xl"
-        >
+        <p ref={descriptionRef} className="text-gray-400 text-lg sm:text-2xl">
           Thanks for visiting. See you next time!
         </p>
+        <a
+          ref={aRef}
+          href="https://github.com/bokyum"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 flex justify-center items-center gap-3 py-3 bg-gray-700 hover:bg-gray-600 text-white text-lg rounded-lg shadow-lg"
+        >
+          <FaGithub size={24} />
+          My GitHub
+        </a>
       </div>
 
-      <a
-        ref={aRef}
-        href="https://github.com/bokyum"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-6 flex items-center gap-3 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white text-lg rounded-lg shadow-lg "
-      >
-        <FaGithub size={24} />
-        Visit My GitHub
-      </a>
+      <AsciiBackground
+        ascii={ascii}
+        height={200}
+        width={200}
+        blockSize={10}
+        refs={bgRefs}
+      />
     </section>
   );
 }

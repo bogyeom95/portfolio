@@ -46,6 +46,7 @@ function AsciiBackground({
   width,
   blockSize,
   refs,
+  xPosition = "right-0",
 }: {
   ascii: string;
 
@@ -53,15 +54,15 @@ function AsciiBackground({
   width: number;
   blockSize: number;
   refs: React.MutableRefObject<(HTMLDivElement | null)[]>;
+  xPosition?: string;
 }) {
   return (
     <div
-      className="absolute max-w-[100vw] max-h-[100vh]  bottom-0 text-gray-500 whitespace-pre text-[4px] md:text-[6px] font-mono overflow-hidden"
+      className={`absolute max-w-[100vw] max-h-[100vh]  bottom-0 ${xPosition} text-gray-500 whitespace-pre text-[4px] md:text-[6px]  overflow-hidden`}
       style={{
         display: "grid",
         gridTemplateColumns: `repeat(${width / blockSize}, auto)`, // 블록 열 개수
-        width: `${width}ch`,
-        height: `${height}em`,
+        fontFamily: "monospace",
         overflow: "hidden",
         pointerEvents: "none", // 상호작용 방지
       }}

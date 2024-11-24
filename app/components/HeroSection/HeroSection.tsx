@@ -3,9 +3,9 @@ import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AsciiBackground from "./components/AsciiBackground";
-import { ascii } from "./ascii";
+import AsciiBackground from "../AsciiArt/AsciiBackground";
 import SplitType from "split-type";
+import { ascii } from "./ascii";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
@@ -39,6 +39,9 @@ export default function HeroSection() {
       animation: gsap.from(bgRefs.current, {
         scale: 0,
         opacity: 0,
+        rotation: 30,
+
+        ease: "back.out(1)",
         stagger: {
           each: 0.1,
           from: "end",
