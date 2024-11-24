@@ -48,7 +48,7 @@ export default function SkillSection() {
       ref={containerRef}
       className="relative h-screen w-screen opacity-0 "
     >
-      <div className="z-10 relative flex flex-col pt-16  gap-2 sm:gap-4  px-4 sm:p-20 justify-center ">
+      <div className="z-10 h-full relative flex flex-col pt-16  gap-2 sm:gap-4  px-4 sm:p-20 justify-center  ">
         <Horizontal
           ref={(el) => {
             if (el) horizontalRefs.current[0] = el;
