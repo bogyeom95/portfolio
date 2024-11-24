@@ -27,10 +27,10 @@ export default function AboutMeSection() {
   useGSAP(() => {
     const tl = gsap.timeline();
     tl.add(animateHorizontal(horizontalRefs.current), 0)
-      .add(animateSplitText(titleRef, { y: -30 }), 0)
+      .add(animateSplitText(titleRef, { y: -10 }), 0)
       .add(
         animateSplitText(descriptionRef, {
-          y: 30,
+          y: 10,
           duration: 0.3,
           stagger: {
             each: 0.03,
@@ -39,7 +39,7 @@ export default function AboutMeSection() {
         }),
         0
       )
-      .add(animateSplitText(cardListHeaderRef, { y: 30 }))
+      .add(animateSplitText(cardListHeaderRef, { y: 10 }))
       .add(animateCards(cardRefs.current), "<");
 
     ScrollTrigger.create({

@@ -1,7 +1,11 @@
 "use client";
 import Horizontal from "@/components/Horizontal";
 import { useRef } from "react";
-import { animateHorizontal } from "../animations";
+import {
+  animateCards,
+  animateHorizontal,
+  animateSplitText,
+} from "../animations";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,13 +13,17 @@ import CareerList from "./components/CareerList";
 gsap.registerPlugin(ScrollTrigger);
 export default function CareerSection() {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLDivElement | null>(null);
   const horizontalRefs = useRef<(HTMLHRElement | null)[]>([]);
   const cardWrapperRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    tl.add(animateHorizontal(horizontalRefs.current), 0);
+    tl.add(animateSplitText(titleRef, { y: -30 }), 0).add(
+      animateHorizontal(horizontalRefs.current),
+      0
+    );
 
     ScrollTrigger.create({
       trigger: containerRef.current,
@@ -31,12 +39,7 @@ export default function CareerSection() {
       start: "top center",
       end: "bottom center",
 
-      animation: gsap.from(cardRefs.current, {
-        opacity: 0,
-        y: 30,
-        stagger: 0.2,
-        duration: 1,
-      }),
+      animation: animateCards(cardRefs.current),
 
       toggleActions: "restart reverse restart reverse",
     });
@@ -50,7 +53,10 @@ export default function CareerSection() {
             if (el) horizontalRefs.current[0] = el;
           }}
         />
-        <h1 className="text-2xl sm:text-4xl lg:text-6xl text-slate-100   font-bold">
+        <h1
+          ref={titleRef}
+          className="text-2xl sm:text-4xl lg:text-6xl text-slate-100   font-bold"
+        >
           Careers
         </h1>
         <Horizontal

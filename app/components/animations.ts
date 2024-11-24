@@ -16,7 +16,7 @@ export function animateSplitText(
     y: 30,
     opacity: 0,
     duration: 0.5,
-    ease: "back(3)",
+    ease: "power3.inOut",
     stagger: 0.05,
   };
 
@@ -40,7 +40,8 @@ export function animateHorizontal(horizontalRefs: (HTMLHRElement | null)[]) {
       scaleX: 0,
       opacity: 0,
       transformOrigin: "left center",
-      duration: 1.5,
+      duration: 1,
+      ease: "power3.inOut",
     }
   );
   return tl;
