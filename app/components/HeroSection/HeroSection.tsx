@@ -97,7 +97,7 @@ export default function HeroSection() {
 
       <div
         ref={scrollHintRef}
-        className="absolute bottom-16 text-center text-white"
+        className="absolute bottom-20 text-center text-white"
         style={{
           left: "50%",
           transform: "translate(-50%, -50%)",
@@ -107,9 +107,9 @@ export default function HeroSection() {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth="6"
+          strokeWidth="3"
           stroke="currentColor"
-          className="w-6 h-6  animate-bounce"
+          className="w-12 h-12  animate-bounce"
         >
           <path
             strokeLinecap="round"
