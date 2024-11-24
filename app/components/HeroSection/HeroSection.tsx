@@ -73,7 +73,7 @@ export default function HeroSection() {
       ref={containerRef}
       className=" w-screen bg-gradient-to-b from-slate-900 via-black to-slate-900"
     >
-      <div className="relative z-10 flex items-center justify-center w-full h-screen flex-col gap-4 text-white ">
+      <div className="relative z-10 flex items-center justify-center w-screen h-screen flex-col gap-4 text-white overflow-hidden">
         <span
           ref={titleRef}
           className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white "
