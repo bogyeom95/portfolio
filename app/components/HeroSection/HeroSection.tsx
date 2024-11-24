@@ -26,6 +26,7 @@ export default function HeroSection() {
         opacity: 0,
         filter: "blur(3px)",
         scale: 3.0,
+        duration: 1,
         stagger: {
           each: 0.1,
           from: "center",
@@ -50,6 +51,11 @@ export default function HeroSection() {
       }),
       pin: true,
       scrub: true,
+      snap: {
+        snapTo: 1,
+        duration: 0.5,
+        ease: "power2.inOut",
+      },
       onUpdate: (self) => {
         if (scrollHintRef.current) {
           if (self.progress > 0.8) {

@@ -1,6 +1,14 @@
 export const ascii = `                                                                                                                                                                                                    
                                                                                                                                                                                                         
-                                                                                                                                                                                                        
+             
+
+
+
+
+
+
+
+
                                            .+qdqm:                                                                                                                                                      
                                          +#Wdwmwb@@:                                                                          =qbhahdm                                                                  
                                        :@*:    ..-@@                                                               -mmp@@@@@@W+   -wb@@oq-                                                              

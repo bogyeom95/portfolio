@@ -139,7 +139,6 @@ function AsciiBackground({
         display: "grid",
         gridTemplateColumns: `repeat(${width / blockSize}, auto)`, // 블록 열 개수
         fontFamily: "monospace",
-        overflow: "hidden",
       }}
     >
       {generateAsciiBlocks(ascii, blockSize, height, width).map(

@@ -9,8 +9,13 @@ export default function Container({ children }: { children: ReactNode }) {
   useGSAP(() => {
     gsap.set(contentRef.current, { autoAlpha: 0 });
     const tl = gsap.timeline();
-    tl.to(loadingRef.current, { autoAlpha: 0, display: "none" });
-    tl.to(contentRef.current, { autoAlpha: 1 }, "-=0.3");
+    tl.to(loadingRef.current, {
+      duration: 1,
+
+      color: "transparent",
+      autoAlpha: 0,
+      display: "none",
+    }).to(contentRef.current, { duration: 1, autoAlpha: 1 });
   });
 
   return (
