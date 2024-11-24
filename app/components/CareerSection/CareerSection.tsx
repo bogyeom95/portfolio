@@ -33,7 +33,7 @@ export default function CareerSection() {
       trigger: cardWrapperRef.current,
       start: "top center",
       end: "bottom center",
-      markers: true,
+
       animation: gsap.from(cardRefs.current, {
         opacity: 0,
         y: 30,
