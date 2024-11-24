@@ -92,12 +92,13 @@ export default function HeroSection() {
         height={150}
         width={200}
         blockSize={10}
+        xPosition="left-0"
         refs={bgRefs}
       />
 
       <div
         ref={scrollHintRef}
-        className="absolute bottom-5 text-center text-white animate-bounce"
+        className="absolute bottom-10 text-center text-white animate-bounce"
         style={{
           left: "50%",
           transform: "translate(-50%, -50%)",
