@@ -1,10 +1,25 @@
 "use client";
-import { ReactNode, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+gsap.registerPlugin(ScrollTrigger);
 export default function Container({ children }: { children: ReactNode }) {
   const loadingRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    // 크기 변경 및 회전 이벤트 처리
+    const refreshScrollTrigger = () => {
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+    };
+
+    window.addEventListener("orientationchange", refreshScrollTrigger);
+    return () => {
+      window.removeEventListener("orientationchange", refreshScrollTrigger);
+    };
+  }, []);
 
   useGSAP(() => {
     gsap.set(contentRef.current, { autoAlpha: 0 });
