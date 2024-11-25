@@ -67,7 +67,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className=" w-screen h-screen bg-gradient-to-b from-slate-900 via-black to-slate-900 flex items-center justify-center "
+      className=" w-screen h-screen bg-gradient-to-b from-slate-900 via-black to-slate-900 flex items-center justify-center overflow-hidden"
     >
       <div className="z-10">
         <span
