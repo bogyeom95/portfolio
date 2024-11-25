@@ -57,7 +57,7 @@ export function animateCards(cardRefs: (HTMLDivElement | null)[]) {
 
       stagger: {
         each: 0.05,
-        ease: "back.out(3)",
+        ease: "power3.inOut",
       },
     }
   );

@@ -11,6 +11,7 @@ import Horizontal from "@/components/Horizontal";
 import CardList from "./components/CardList";
 import {
   animateCards,
+  animateContainer,
   animateHorizontal,
   animateSplitText,
 } from "../animations";
@@ -20,8 +21,10 @@ export default function AboutMeSection() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const descriptionRef = useRef<HTMLParagraphElement | null>(null);
-  const cardListHeaderRef = useRef<HTMLDivElement | null>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const cardContainerRef = useRef<HTMLDivElement | null>(null);
+  const cardTitleRef = useRef<HTMLDivElement | null>(null);
+  const cardContentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const horizontalRefs = useRef<(HTMLHRElement | null)[]>([]);
 
   useGSAP(() => {
@@ -39,8 +42,9 @@ export default function AboutMeSection() {
         }),
         0
       )
-      .add(animateSplitText(cardListHeaderRef, { y: 10 }))
-      .add(animateCards(cardRefs.current), "<");
+      .add(animateContainer(cardContainerRef), "-=0.3")
+      .add(animateSplitText(cardTitleRef, { y: 10 }))
+      .add(animateCards(cardContentRefs.current), "<");
 
     ScrollTrigger.create({
       trigger: containerRef.current,
@@ -86,14 +90,17 @@ export default function AboutMeSection() {
             if (el) horizontalRefs.current[2] = el;
           }}
         />
-        <div className="w-full bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div
+          ref={cardContainerRef}
+          className="w-full bg-gray-800 p-6 rounded-lg shadow-lg opacity-0"
+        >
           <h1
-            ref={cardListHeaderRef}
+            ref={cardTitleRef}
             className="text-2xl sm:text-3xl lg:text-4xl text-white font-bold text-center mb-6 border-b-2 border-slate-500 pb-2"
           >
             About Me
           </h1>
-          <CardList items={aboutMeItems} cardRefs={cardRefs} />
+          <CardList items={aboutMeItems} cardRefs={cardContentRefs} />
         </div>
         <Horizontal
           ref={(el) => {

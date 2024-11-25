@@ -56,7 +56,7 @@ export default function EndSection() {
           href="https://github.com/bokyum"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 flex justify-center items-center gap-3 py-3 bg-gray-700 hover:bg-gray-600 text-white text-lg rounded-lg shadow-lg"
+          className="mt-6 flex justify-center items-center gap-3 py-3 bg-gray-700 hover:bg-gray-800 text-white text-lg rounded-lg shadow-lg"
         >
           <FaGithub size={24} />
           My GitHub
