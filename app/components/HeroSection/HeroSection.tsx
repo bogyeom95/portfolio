@@ -10,47 +10,31 @@ import { animateHeroTitle } from "./animations";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
-  const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const containerRef = React.useRef<HTMLElement | null>(null);
   const titleRef = React.useRef<HTMLDivElement | null>(null);
   const bgRefs = React.useRef<(HTMLDivElement | null)[]>([]);
-  const scrollHintRef = React.useRef<HTMLButtonElement | null>(null);
 
   useGSAP(() => {
     animateHeroTitle(titleRef);
+
+    const tl = animateAsciiBG(bgRefs, {
+      scale: 0,
+      opacity: 0,
+      rotation: 30,
+      ease: "back.out(1)",
+      stagger: {
+        each: 0.1,
+        from: "end",
+      },
+    });
 
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: "top top",
       end: "+=2000",
-      animation: animateAsciiBG(bgRefs, {
-        scale: 0,
-        opacity: 0,
-        rotation: 30,
-        ease: "back.out(1)",
-
-        stagger: {
-          each: 0.1,
-          from: "end",
-        },
-      }),
+      animation: tl,
       pin: true,
       scrub: true,
-
-      onUpdate: (self) => {
-        if (scrollHintRef.current) {
-          if (self.progress > 0.9) {
-            gsap.to(scrollHintRef.current, {
-              opacity: 0,
-              duration: 0.5,
-            });
-          } else {
-            gsap.to(scrollHintRef.current, {
-              opacity: 1,
-              duration: 0.5,
-            });
-          }
-        }
-      },
     });
   });
 
@@ -67,9 +51,9 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className=" w-screen h-screen bg-gradient-to-b from-slate-900 via-black to-slate-900 flex items-center justify-center overflow-hidden"
+      className="relative  w-screen h-screen overflow-hidden bg-gradient-to-b from-slate-900 via-black to-slate-900 "
     >
-      <div className="z-10">
+      <div className="z-10  relative  w-screen h-screen flex items-center justify-center ">
         <span
           ref={titleRef}
           className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white "
@@ -87,17 +71,23 @@ export default function HeroSection() {
         blockSize={10}
         xPosition="left-0"
         refs={bgRefs}
-        animate={true}
+        animate={false}
       />
 
       <button
-        ref={scrollHintRef}
-        className="absolute bottom-16 text-center text-white z-50"
-        style={{
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
         onClick={handleScrollHintClick}
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          left: "50%",
+          marginLeft: "-18px",
+          border: "0",
+          outline: "0",
+          width: "36px",
+          height: "36px",
+          color: "white",
+          zIndex: 100,
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +95,6 @@ export default function HeroSection() {
           viewBox="0 0 24 24"
           strokeWidth="3"
           stroke="currentColor"
-          className="w-12 h-12  animate-bounce"
         >
           <path
             strokeLinecap="round"
