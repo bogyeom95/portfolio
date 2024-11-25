@@ -34,8 +34,6 @@ export default function EndSection() {
 
       toggleActions: "restart reverse restart reverse",
     });
-
-    console.log(ScrollTrigger.getAll().length);
   });
 
   return (
@@ -43,7 +41,7 @@ export default function EndSection() {
       ref={containerRef}
       className="relative w-screen h-screen bg-gradient-to-b from-slate-900 via-black to-slate-900 flex items-center justify-center "
     >
-      <div className="text-center relative z-10">
+      <div className="text-center z-10">
         <span
           ref={titleRef}
           className="text-5xl sm:text-7xl lg:text-9xl font-extrabold text-white"

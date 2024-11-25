@@ -3,10 +3,10 @@ import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SplitType from "split-type";
 import { animateAsciiBG } from "../animations";
 import AsciiBackground from "../AsciiBackground";
 import { ascii } from "./ascii";
+import { animateHeroTitle } from "./animations";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
@@ -16,23 +16,7 @@ export default function HeroSection() {
   const scrollHintRef = React.useRef<HTMLButtonElement | null>(null);
 
   useGSAP(() => {
-    if (titleRef.current) {
-      const titleAnimation = gsap.timeline();
-      const titleSplitText = new SplitType(titleRef.current, {
-        types: "chars",
-      });
-      titleAnimation.from(titleSplitText.chars, {
-        y: gsap.utils.wrap([-30, 30]),
-        opacity: 0,
-        filter: "blur(3px)",
-        scale: 3.0,
-        duration: 1,
-        stagger: {
-          each: 0.1,
-          from: "center",
-        },
-      });
-    }
+    animateHeroTitle(titleRef);
 
     ScrollTrigger.create({
       trigger: containerRef.current,
@@ -83,21 +67,17 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className=" w-screen bg-gradient-to-b from-slate-900 via-black to-slate-900"
+      className=" w-screen h-screen bg-gradient-to-b from-slate-900 via-black to-slate-900 flex items-center justify-center "
     >
-      <div className="flex items-center justify-center w-screen h-screen flex-col gap-4 text-white overflow-hidden">
-        <div className="relative z-10">
-          <span
-            ref={titleRef}
-            className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white "
-          >
-            BOGYEOM
-            <br />
-            <span className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white ">
-              PORTFOLIO
-            </span>
-          </span>
-        </div>
+      <div className="z-10">
+        <span
+          ref={titleRef}
+          className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white "
+        >
+          BOGYEOM
+          <br />
+          PORTFOLIO
+        </span>
       </div>
 
       <AsciiBackground

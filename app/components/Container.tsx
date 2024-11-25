@@ -19,7 +19,7 @@ export default function Container({ children }: { children: ReactNode }) {
   });
 
   return (
-    <main className="w-[100vw]  ">
+    <main className="min-h-screen ">
       <div
         ref={loadingRef}
         className="fixed text-center text-white z-50"
