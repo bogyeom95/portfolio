@@ -44,7 +44,7 @@ export default function SkillSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-screen h-screen  bg-gradient-to-b from-slate-900 via-black to-slate-900  "
+      className="relative w-screen h-screen  bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900  "
     >
       <div className="z-10  relative flex flex-col pt-16  gap-2 sm:gap-4  px-4 sm:p-20   ">
         <Horizontal

@@ -13,18 +13,24 @@ export default function HeroSection() {
   const containerRef = React.useRef<HTMLElement | null>(null);
   const titleRef = React.useRef<HTMLDivElement | null>(null);
   const bgRefs = React.useRef<(HTMLDivElement | null)[]>([]);
-
+  const scrollHintRef = React.useRef<HTMLButtonElement | null>(null);
   useGSAP(() => {
-    animateHeroTitle(titleRef);
+    const tl = gsap.timeline();
+    tl.add(animateHeroTitle(titleRef));
+    tl.from(scrollHintRef.current, {
+      y: -10,
+      repeat: -1,
+      yoyo: true,
+    });
 
-    const tl = animateAsciiBG(bgRefs, {
+    const bgAnimation = animateAsciiBG(bgRefs, {
       scale: 0,
       opacity: 0,
       rotation: 30,
       ease: "back.out(1)",
       stagger: {
-        each: 0.1,
-        from: "end",
+        each: 0.01,
+        from: "center",
       },
     });
 
@@ -32,7 +38,7 @@ export default function HeroSection() {
       trigger: containerRef.current,
       start: "top top",
       end: "+=2000",
-      animation: tl,
+      animation: bgAnimation,
       pin: true,
       scrub: true,
     });
@@ -50,7 +56,7 @@ export default function HeroSection() {
 
   return (
     <section ref={containerRef}>
-      <div className="relative  w-screen h-screen   bg-gradient-to-b from-slate-900 via-black to-slate-900 ">
+      <div className="relative  w-screen h-screen bg-gradient-to-b from-slate-900 via-black to-slate-900 ">
         <div className="z-10  relative  w-full h-full flex items-center justify-center ">
           <span
             ref={titleRef}
@@ -73,6 +79,7 @@ export default function HeroSection() {
         />
 
         <button
+          ref={scrollHintRef}
           onClick={handleScrollHintClick}
           style={{
             position: "absolute",
@@ -81,8 +88,8 @@ export default function HeroSection() {
             marginLeft: "-18px",
             border: "0",
             outline: "0",
-            width: "36px",
-            height: "36px",
+            width: "42px",
+            height: "42px",
             color: "white",
             zIndex: 100,
           }}
@@ -91,7 +98,7 @@ export default function HeroSection() {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth="3"
+            strokeWidth="2"
             stroke="currentColor"
           >
             <path
