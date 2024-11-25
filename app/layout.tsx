@@ -27,11 +27,13 @@ export default function RootLayout({
       <head>
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"
         />
       </head>
 
-      <body className={`${roboto.variable} bg-slate-900`}>{children}</body>
+      <body className={`${roboto.variable} bg-slate-900 h-full w-full`}>
+        {children}
+      </body>
     </html>
   );
 }
