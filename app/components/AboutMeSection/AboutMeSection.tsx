@@ -77,7 +77,8 @@ export default function AboutMeSection() {
           ref={descriptionRef}
           className="text-sm sm:text-lg lg:text-xl  text-slate-300"
         >
-          복잡한 문제를 간단히 해결하는 데 집중하며, <br />
+          복잡한 문제를 간단히 해결하는 데 집중하며,
+          <br />
           현재 프론트엔드 개발에 깊은 관심을 가진 개발자입니다.
         </div>
         <Horizontal
