@@ -23,7 +23,7 @@ export default function Container({ children }: { children: ReactNode }) {
   }, []);
 
   useGSAP(() => {
-    gsap.set(contentRef.current, { autoAlpha: 0 });
+    gsap.set(contentRef.current, { autoAlpha: 0, height: "100%" });
     const tl = gsap.timeline();
     tl.to(loadingRef.current, {
       duration: 1,
@@ -54,7 +54,7 @@ export default function Container({ children }: { children: ReactNode }) {
       </div>
 
       <div
-        className="opacity-0 break-all w-screen overflow-x-hidden"
+        className="opacity-0 break-all w-screen overflow-x-hidden h-screen"
         ref={contentRef}
       >
         {children}
