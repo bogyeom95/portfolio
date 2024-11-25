@@ -3,17 +3,17 @@ import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AsciiBackground from "../AsciiBackground";
 import SplitType from "split-type";
-import { ascii } from "./ascii";
 import { animateAsciiBG } from "../animations";
+import AsciiBackground from "../AsciiBackground";
+import { ascii } from "./ascii";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const titleRef = React.useRef<HTMLDivElement | null>(null);
   const bgRefs = React.useRef<(HTMLDivElement | null)[]>([]);
-  const scrollHintRef = React.useRef<HTMLDivElement | null>(null);
+  const scrollHintRef = React.useRef<HTMLButtonElement | null>(null);
 
   useGSAP(() => {
     if (titleRef.current) {
@@ -51,14 +51,10 @@ export default function HeroSection() {
       }),
       pin: true,
       scrub: true,
-      snap: {
-        snapTo: 1,
-        duration: 0.5,
-        ease: "power2.inOut",
-      },
+
       onUpdate: (self) => {
         if (scrollHintRef.current) {
-          if (self.progress > 0.8) {
+          if (self.progress > 0.9) {
             gsap.to(scrollHintRef.current, {
               opacity: 0,
               duration: 0.5,
@@ -74,22 +70,34 @@ export default function HeroSection() {
     });
   });
 
+  const handleScrollHintClick = () => {
+    if (containerRef.current) {
+      const scrollPosition = 2000;
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section
       ref={containerRef}
       className=" w-screen bg-gradient-to-b from-slate-900 via-black to-slate-900"
     >
-      <div className="relative z-10 flex items-center justify-center w-screen h-screen flex-col gap-4 text-white overflow-hidden">
-        <span
-          ref={titleRef}
-          className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white "
-        >
-          BOGYEOM
-          <br />
-          <span className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white ">
-            PORTFOLIO
+      <div className="flex items-center justify-center w-screen h-screen flex-col gap-4 text-white overflow-hidden">
+        <div className="relative z-10">
+          <span
+            ref={titleRef}
+            className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white "
+          >
+            BOGYEOM
+            <br />
+            <span className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white ">
+              PORTFOLIO
+            </span>
           </span>
-        </span>
+        </div>
       </div>
 
       <AsciiBackground
@@ -99,15 +107,17 @@ export default function HeroSection() {
         blockSize={10}
         xPosition="left-0"
         refs={bgRefs}
+        animate={true}
       />
 
-      <div
+      <button
         ref={scrollHintRef}
-        className="absolute bottom-20 text-center text-white"
+        className="absolute bottom-16 text-center text-white z-50"
         style={{
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}
+        onClick={handleScrollHintClick}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +133,7 @@ export default function HeroSection() {
             d="M19 9l-7 7-7-7"
           />
         </svg>
-      </div>
+      </button>
     </section>
   );
 }
