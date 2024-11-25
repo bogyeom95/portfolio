@@ -37,7 +37,10 @@ export default function Container({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-      <div className="opacity-0 break-all" ref={contentRef}>
+      <div
+        className="opacity-0 break-all w-screen overflow-hidden"
+        ref={contentRef}
+      >
         {children}
       </div>
     </main>

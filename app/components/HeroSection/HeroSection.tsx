@@ -49,60 +49,59 @@ export default function HeroSection() {
   };
 
   return (
-    <section
-      ref={containerRef}
-      className="relative  w-screen h-screen overflow-hidden bg-gradient-to-b from-slate-900 via-black to-slate-900 "
-    >
-      <div className="z-10  relative  w-screen h-screen flex items-center justify-center ">
-        <span
-          ref={titleRef}
-          className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white "
+    <section ref={containerRef}>
+      <div className="relative  w-screen h-screen   bg-gradient-to-b from-slate-900 via-black to-slate-900 ">
+        <div className="z-10  relative  w-full h-full flex items-center justify-center ">
+          <span
+            ref={titleRef}
+            className="text-5xl sm:text-7xl lg:text-9xl font-extrabold  text-white "
+          >
+            BOGYEOM
+            <br />
+            PORTFOLIO
+          </span>
+        </div>
+
+        <AsciiBackground
+          ascii={ascii}
+          height={150}
+          width={200}
+          blockSize={10}
+          xPosition="left-0"
+          refs={bgRefs}
+          animate={false}
+        />
+
+        <button
+          onClick={handleScrollHintClick}
+          style={{
+            position: "absolute",
+            bottom: "20px",
+            left: "50%",
+            marginLeft: "-18px",
+            border: "0",
+            outline: "0",
+            width: "36px",
+            height: "36px",
+            color: "white",
+            zIndex: 100,
+          }}
         >
-          BOGYEOM
-          <br />
-          PORTFOLIO
-        </span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="3"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
       </div>
-
-      <AsciiBackground
-        ascii={ascii}
-        height={150}
-        width={200}
-        blockSize={10}
-        xPosition="left-0"
-        refs={bgRefs}
-        animate={false}
-      />
-
-      <button
-        onClick={handleScrollHintClick}
-        style={{
-          position: "absolute",
-          bottom: "20px",
-          left: "50%",
-          marginLeft: "-18px",
-          border: "0",
-          outline: "0",
-          width: "36px",
-          height: "36px",
-          color: "white",
-          zIndex: 100,
-        }}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="3"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
-      </button>
     </section>
   );
 }
