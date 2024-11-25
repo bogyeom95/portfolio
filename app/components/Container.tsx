@@ -2,13 +2,14 @@
 import { ReactNode, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 export default function Container({ children }: { children: ReactNode }) {
   const loadingRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // 크기 변경 및 회전 이벤트 처리
+    // 모바일 회전 이벤트 처리
     const refreshScrollTrigger = () => {
       setTimeout(() => {
         ScrollTrigger.refresh();
