@@ -1,6 +1,6 @@
 # 포트폴리오
 
-[홈페이지 바로가기](https://bogyeom-portfolio.vercel.app/)
+[결과 보러가기](https://bogyeom-portfolio.vercel.app/)
 
 ## 주요 기술
 
@@ -83,55 +83,44 @@ if __name__ == "__main__":
 ## Ascii Art 결과 예제
 
 ```text
------==++mmmm++=--:::::::::-==+mmmmm++++mmmwwwwwwqwwqqqqqqqqqqqqqwwqqqqqqqqwwwwwwmmmwwwwwwwwwwwwwwmm
-====+mmwwwwwwwwwwwm+++=====+++mmmmmm+++++++mmwwwwwwwwwwqqqqqqqqqqqqqqwwwqqqwwwwwwwwwwwwwwwwwwwwwwwww
-mmmmwwwwwwwwwwwwqwwwwwwwwwwwwwwwwwwwmmmmm+=-:::::....:::-=+mwqqqwqqqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwm
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwm-.      ...............-=mqqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwmmm++
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwm-:.     .....................:+wqwwwwwwwwwwwwwwwwwwmmmmmmmmm+++++
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwm-................................:=wwwwwwwwwwwwwwwwwmmmmmmmmmmm++==
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww=..........................:-........:+wwwwwwwwwwwwwmmmmmmm+++++=----
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwww:....=................:-.....--.........-wwwwwmmmmmmmmmmmmm+++++++++++
-wwwwwwwwwwwwwwwwwwwmmmmmmmmmw:::...+...............:-.......=:.........:mwwwwmmmmmmmmmmmmmmmmmmm++++
-wwwwwwwwwwwwwwwwwmmmmmmmmmmw=:-...:=...............-........:=..........:wmwwmmmmmmm+++=============
-wwwwwwwwwwwwmmmmmmmmmmmmmmmm:-....--..............-:.........=...........-wmmmmmmm++==----------====
-wqppqqqqqwwmmmmmmmmmmmmmmmw--.....-:..............:..........=............mmmmmmmmmm++=========+++++
-qpbbdpqqqqqwmmmmmmmmmmmmmm+::....:=...............:=:........:............=mmmmmmmmmmmm+++++++mmmmmm
-wqpddddpqqqqwm++++++++++++.-w=-=qd+...............:qkdw+===+m-............-wmmmmmmmmmmmmmmmmmmm++m+m
-wwwqpppppppppqwm+======+m::=pwmwq=-::...............:+wwwwm+-.............+wmmmmmmmmm+++++++++++++++
-mwwwqppppppdppqqm=--===+++++++===++++====-................................w+++++++++================
-mmmwwqpdbbbbbdqqw=-==------=+=-::---=+=====-::::.........................:q-=====-------------------
-mmmmmwqpbkkkkbpqwm:==---=++m===--:::-m+++++q-::::--::::::...:...........:++:::::::.........---====++
-wwwwwwqppddbbbpp+:..---mm=------=++===----=m-.......:::--:::-:.........:=m:...:::.........:mmmmmmmmm
-pqqqppppppdddddpwm=...:m+--------m+------===-.........................:=+m--=+mmmmm===::=mmmmmmmmmmm
-bddbbbbdpppdbkbdppqmm+-.::---==--=---==+=::..........................:==wmmmmmmmmmmwwwwwwwmmmmmmmmmm
-bbbbbbbpqwwwpdddppqpq+-------=..........:-:.........................:==wwmmmmmwwqqwwwwwwwwmmmwwwwmmm
-pddqqqqqwwwwwqqppqpw=--:::::=+............--::....................:-==wwmwwwqqqpdddpqqwwwwmmwwwwwwww
-pddqwwwwwwwwqqqqqpp=.:-------=..............::--::..............:-==+mwwwwqpdpppddppqqqwwwwqqqwwqqqq
-dddppqqqqqqqqqqqqqp:.........=..................:::--::::....:-===++= +qwwwwwwwwwwwwwwwwwqpppqqqpppp
-qppppppqqqwwwwwwqqp:.........=q:......................:::::-=+++++w-  wqwwwmmmmmwwmmmmmmwwwwwwmmwwwq
-wqqqqqqqwwwwwwwwqqd=........-+w+:............................:-=++-. -qwwwwwmmmwwwmmmmmmmmmmmwwwmmmw
-qqqpppqqwwwqqqqqqpdm-:.....::+=-+:...............................=q: -qwwqwwwwmwwwmmmmmmmmmmwqqqqwww
-pppddddppqqppppppppp==:.....=m=..=:...............................:=: mwwwqqwwwwmmmmwwqqwwwwqqqqpppq
-dddddbbbbbddpppppppdw==-:..-w+....+:................................+..wwwwpqwwwwwwqppddppqqqqqppddd
-bbbddbbkkkkkbdddppppdw===--m=..:::-m=:..............................:= :qwwwpqwwwqpddddpppppppppdddd
-kkkbbkkkhhhkbbbbbddppdq+==m+       .=+-:.............................=. mqwqqpqqqqpdbdddppdddddppppp
-hhhhhhhhhkkkbbbkkbdddddpmmm:        :.-+=-:.......................::=w. +pqqwqdpppddbbbbddbbbbbbdddb
-hhaahhhkkkkkkkkkkkbbbbbbbq+        .:  .-===-::...............::--=+++: +qwwwwpdpddbbbbbbbbbbkkkkkkk
-hhhhhhkkkkkhhhhkkkkkkkkbw=-        :      :==+==------------=====++-:=. +wwwwwwpppppdddddbbbkkkhhhhh
-kkkkhhhhhhhhhhkkkbbbbbbd:.         -         .-==++++++===+++++m=-:.:-. wwwwwwwqqqqqppddbbkkkkhhhhhh
-bbbbkkkkkkkkkbbbbddddbbw          .:             ..::--====---=-....-: :qwwwwwwqpqpppdbbbkkkkhhhhkkk
-qqpddddbbbbbddddddddddd-          :.                        .: ....:-. =wwwwwwwwpppddbbbbbkkkhhhkkbb
-wwqppppdbbbddddpppppppq           :                        ..  ....=:. wwwwwwwwwpbdbbbbbbbbkkhhkbbbb
-m=-=mqpdbbddddpppppqqqm           -                       :. .....:-. .qwwwwwwwwpbbbbbbbbbbbbkhkbbbb
-=:...-+=---+qpqqqqwwwwm......... .+                      :  ......:-. .qwwwwwwwwpbddbbbbddddbkkkbbbb
-::.-+++=:..:mwmmmmmmmm=          :+....................... .......:-.  wwwwwwwwwqbdddbbbbdddbbbbbbbb
---:+pdbp:.-=mmmm===+++=           -                      .::.......=.. =qwwwwwwwqppdddbbbbbbbbdwmwpd
-++qmmwm+=+++qbw+:.::-=-.::.       -      .::....-=:.    ...::......:-.  wwwwwwwwwqqqqqqqqqpppppp+--+
-=+qwm+==wakpdbqww+=---=+w=:.    :-+=-..-+mmmmmqq+---. ......:-::-::.--. -wwwwwwmmwmmmm++mmwwwm+++===
-wqpwq+---mbqwwwwwwwm+mmwwqppw=---=+mm+=+wqmmmmqdwmwwm=---:....-::----+-.=pw+---=+mmwbkqwqpqw+-----+m
--q@@k-::---+++mppbkbdpwwwqqddw+--=++wmmmqpwwwmmppw+mww++m+=-=+mmm+mmmmwmww+::::::++=mkMabp+=+mwwm+++
-baMM*pwm+=+m=-mhbbqmmmwm+wppqw+----+d++mm=+qpppppqwwwwwqwwmmd*km==+mwwwm:..::=====---:+MMm-=+wqw+mbh
-@@owmq+:::-+mwdwm+++-:-++mwmwwqdpqdhh==+mwpw+=+wqqwqwwqw+====pm-==+++m+:::::=pwmw==+wpd#Mwmwwwpppddq
-##kppoWm+wmmph&m=::=+-:-+++qbhbdkokbbpqqqwm:-===+wwwwwdw===++++mm+=-:::=mmm+-:=+::=wpdkqm++=+wqwm+-:
-hp++mdM@hdm+qdhMkbbhMpwb*d+mwbdpM&*apw=:::::--=++++=-=dMbw==mwqpp+-::-b#hqpqw-map-+wppd+-:.:=+=::.-m
+                                                             :.
+                                           :.                maq:
+                                          -dp+=:             +k@@+
+                                          w@@aqpm.       ....qb@@@+
+                                         .p@@@bb*b:......:==+mwk@@o
+                            ..:---:::..   q&@@*pbqmmmm+=-:::=++mmpp.
+                         ..:-==+wqqqwwmm=:-b@Wpwwwwm+mmwwm=--=mww+mqm.
+                      :----------=mpbbdpppwm-:qqq=.    :mqqm==+qm :.mb-
+                     :.     ..:--==+pkhahkh+ wpq: .wdaw  +ppw++mp-@b +o=
+                     ..:::::.   -===mqh*M%b mbb=  *a-@@d  pbpmwwdw+k  k@:
+                   .-========-..:-==+mqa@@w dbk-  m@@@@+  ==-@@@@:    =Mq
+                  :+++=+qppw+=+=---==+wpW@+.kkhw   .==.   .  .d@. p=   -=
+                 .++++b@@@@@@hm++=--==mpb@w kad=         :@dmw@@@#k.  :-:
+                 -m++b@@@@@@@@aw++===++qdM@ m+            .m@@aa@w  .-==.    .=mm.
+                 :mmmh@@@@@@@@-:+m+==++mbk@d                .+m+: .-=+=.    :qkqMd
+                  mwww%@@@@@@p  .mm++++mdk@@b....             ..:==++-.     =bob@a
+                  .mqwwpaWWadm.  -wm++mmdh@@@@w:.:::::::::---===+++-.      -wdhW@b
+                   .=wppqppppw.  .wmmmmmba@@@@@@hw=-----====+++mmq@a    .-mpdb@@@+
+                      :=+m+=:    .wwmmwwko@@@@@@@@q**ak======++mwwk@*-=mqbkbk@@@@
+                                 :qqwqqq**@@@@@@@k pbkk:....::-==++b@@haahhM@@@@-
+                                 mppppqb%W@@@@@@k=.+qpp.       .:-==*@@*W@@@@@@-
+                                -dddppd#@@@@@@m.-+wwqdb:         .::+@@@@@@@@d.
+                               :bbbbdb#@@@@@@:.wqqqkoM*:          .::b@@@@@d:
+                              .dhkkkk%@@@@@@= qpqqp*@@@:           ::+@@d=.
+                              qaahhh@@@@@@@@ =dppppp*@@-           .:=@k
+                             +Mooaa@@@@@@@@@mbkddpppppppq:         .:=@b
+                             a&**o@@@@@@@@@@m*@MkbddppqqpW+        ::=@@:
+                            :@@M*W@@@@@@@@@-.@@@@@@@#adpp%M       .::m@@@.
+                            -@@@#@@@@@@@@@w wk#@@@@@@@@#@@b      .::-w@@@k
+                            :@@@@@@@@@@@@@ :kbbbho@@@@@@@@@:    .::-mq@@@@.
+                             h@@@@@@@@@@@@ +hkkkkkkkh*@@@@@w  .:::=wmd@@@@-
+                             =@@@@@@@@@@@@ =ohhhhhaaaaaa@@@p.:---+wwm@@@@@:
+                              w@@@@@@@@@@@+.koaaaoooo*o#@@@w--=mwqmm@@@@@o
+                               +@@@@@@@@@@@:-*********@@@@W+mwqqm+d@@@@@@:
+                                .d@@@@@@@@@o+*M**MM#@@@@@@qqwmmwb@@@@@@@:
+                                  :w@@@@@@@pk@@@@@@@@@@@p+mqph@@@@@@@@w
+                                     :+pa@@w@@@MooW@@@p:  @@@@@@@@@@dm=.
+                                           k@@&#Modq@@@@= @@@@@@@@@@@@@@=
+                         .mwmmmmmmmmmmmmmmwbbkkkkhkpphaodmkahhhhhhaaaaaobmmww+
+                          .:::::-----------::::::-----------------=-::::-=-::.
 ```
