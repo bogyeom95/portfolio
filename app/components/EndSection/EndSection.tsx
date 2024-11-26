@@ -25,7 +25,7 @@ export default function EndSection() {
     tl.add(animateSplitText(titleRef, { duration: 1, y: -30 }), 0)
       .add(animateSplitText(descriptionRef, { duration: 0.5, y: 30 }), 0)
       .add(linkAnimation, 0)
-      .add(animateAsciiBG(bgRefs), 0);
+      .add(animateAsciiBG(bgRefs), "-=0.3");
 
     ScrollTrigger.create({
       trigger: containerRef.current,
@@ -67,9 +67,9 @@ export default function EndSection() {
 
       <AsciiBackground
         ascii={ascii}
-        height={200}
+        height={120}
         width={200}
-        blockSize={10}
+        blockSize={20}
         refs={bgRefs}
         animate={true}
       />

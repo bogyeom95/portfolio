@@ -29,7 +29,7 @@ export default function SkillSection() {
     tl.add(animateHorizontal(horizontalRefs.current), 0)
       .add(animateSplitText(titleRef, { y: -30 }), 0)
       .add(animateCards(cardRefs.current))
-      .add(animateAsciiBG(bgRefs), 0);
+      .add(animateAsciiBG(bgRefs), "-=0.3");
 
     ScrollTrigger.create({
       trigger: containerRef.current,
@@ -78,9 +78,9 @@ export default function SkillSection() {
 
       <AsciiBackground
         ascii={ascii}
-        height={110}
+        height={120}
         width={200}
-        blockSize={10}
+        blockSize={20}
         refs={bgRefs}
       />
     </section>

@@ -27,9 +27,9 @@ export default function HeroSection() {
       scale: 0,
       opacity: 0,
       rotation: 30,
-      ease: "back.out(1)",
+
       stagger: {
-        each: 0.01,
+        each: 0.015,
         from: "center",
       },
     });

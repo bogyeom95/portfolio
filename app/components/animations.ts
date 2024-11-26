@@ -74,7 +74,7 @@ export function animateAsciiBG(
     rotation: 45,
     ease: "back.out(2)",
     stagger: {
-      each: 0.01,
+      each: 0.02,
     },
   };
 
