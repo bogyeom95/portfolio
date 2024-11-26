@@ -13,12 +13,14 @@ export default function Container({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // 모바일 회전 이벤트 처리
+
     const refreshScrollTrigger = () => {
       setTimeout(() => {
         ScrollTrigger.refresh();
       }, 100);
     };
 
+    window.scrollTo(0, 0);
     window.addEventListener("orientationchange", refreshScrollTrigger);
     return () => {
       window.removeEventListener("orientationchange", refreshScrollTrigger);
@@ -33,7 +35,7 @@ export default function Container({ children }: { children: ReactNode }) {
       color: "transparent",
       autoAlpha: 0,
       display: "none",
-    }).to(contentRef.current, { duration: 1, autoAlpha: 1 });
+    }).to(contentRef.current, { duration: 2, autoAlpha: 1 });
   });
 
   return (
