@@ -15,7 +15,7 @@
 from PIL import Image, ImageEnhance
 
 # 확장된 ASCII 문자 세트 정의 (어두운 순서대로)
-ASCII_CHARS = "@&%#WM*oahkbdpqwm+=-:.     "
+ASCII_CHARS = "@&%#WM*oahkbdpqwm+=-:. "
 
 def resize_image(image, new_width=100):
     """이미지 크기 조정."""
