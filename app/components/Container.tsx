@@ -40,6 +40,9 @@ export default function Container({ children }: { children: ReactNode }) {
     }).to(contentRef.current, {
       duration: 2,
       autoAlpha: 1,
+      onStart: () => {
+        window.scrollTo(0, 0); // 새로고침시 스크롤 위치 초기화 용도
+      },
     });
   });
 

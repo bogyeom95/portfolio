@@ -134,7 +134,7 @@ function AsciiBackground({
 
   return (
     <div
-      className={`absolute max-w-[100vw] max-h-[100vh]  bottom-0 ${xPosition} cursor-pointer ${animate ? "" : "pointer-events-none"}  text-gray-500 whitespace-pre text-[5px]   md:text-[7px] leading-[5px] md:leading-[7px]  overflow-hidden`}
+      className={`absolute max-w-[100vw] max-h-[100vh]  bottom-0 ${xPosition} cursor-pointer ${animate ? "" : "pointer-events-none"}  text-gray-500 whitespace-pre text-[5px]   md:text-[6px] leading-[5px] md:leading-[6px]  overflow-hidden`}
       style={{
         display: "grid",
         gridTemplateColumns: `repeat(${width / blockSize}, auto)`, // 블록 열 개수
