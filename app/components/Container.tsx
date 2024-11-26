@@ -20,7 +20,6 @@ export default function Container({ children }: { children: ReactNode }) {
       }, 100);
     };
 
-    window.scrollTo(0, 0);
     window.addEventListener("orientationchange", refreshScrollTrigger);
     return () => {
       window.removeEventListener("orientationchange", refreshScrollTrigger);
@@ -35,7 +34,13 @@ export default function Container({ children }: { children: ReactNode }) {
       color: "transparent",
       autoAlpha: 0,
       display: "none",
-    }).to(contentRef.current, { duration: 2, autoAlpha: 1 });
+    }).to(contentRef.current, {
+      duration: 2,
+      autoAlpha: 1,
+      onStart: () => {
+        window.scrollTo(0, 0); // 새로고침시 스크롤 위치 초기화 용도
+      },
+    });
   });
 
   return (
