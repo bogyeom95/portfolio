@@ -76,7 +76,7 @@ export default function SkillSection() {
 
       <AsciiBackground
         ascii={ascii}
-        height={100}
+        height={110}
         width={200}
         blockSize={10}
         refs={bgRefs}

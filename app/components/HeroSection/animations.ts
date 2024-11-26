@@ -13,7 +13,7 @@ export function animateHeroTitle(titleRef: React.RefObject<HTMLElement>) {
       opacity: 0,
       filter: "blur(3px)",
       scale: 3.0,
-      duration: 1.5,
+      duration: 1,
       stagger: {
         each: 0.1,
         from: "center",
