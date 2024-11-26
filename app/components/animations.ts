@@ -71,8 +71,8 @@ export function animateAsciiBG(
   const defaultVars: gsap.TweenVars = {
     scale: 0.1,
     opacity: 0,
-    rotation: 45,
-    ease: "back.out(2)",
+    rotation: 30,
+    ease: "back.out(1.7)",
     stagger: {
       each: 0.025,
     },
