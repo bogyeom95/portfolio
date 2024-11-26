@@ -20,29 +20,32 @@ export default function CareerSection() {
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    tl.add(animateSplitText(titleRef, { y: -30 }), 0).add(
-      animateHorizontal(horizontalRefs.current),
-      0
-    );
+    tl.add(animateSplitText(titleRef, { y: -30 }), 0)
+      .add(animateHorizontal(horizontalRefs.current), 0)
+      .add(animateCards(cardRefs.current));
 
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top 80%",
-      end: "bottom 20%",
-      animation: tl,
-
-      toggleActions: "restart reverse restart reverse",
-    });
-
-    ScrollTrigger.create({
-      trigger: cardWrapperRef.current,
       start: "top center",
       end: "bottom center",
+      animation: tl,
 
-      animation: animateCards(cardRefs.current),
-
-      toggleActions: "restart reverse restart reverse",
+      // toggleActions:  onEnter, onLeave, onEnterBack, and onLeaveBack
+      // toggleActions: "restart none none none",
+      // toggleActions: "restart reverse restart reverse",
     });
+
+    // ScrollTrigger.create({
+    //   trigger: cardWrapperRef.current,
+    //   start: "top center",
+    //   end: "bottom center",
+
+    //   animation: animateCards(cardRefs.current),
+
+    //   // toggleActions:  onEnter, onLeave, onEnterBack, and onLeaveBack
+    //   toggleActions: "restart complete restart complete",
+    //   // toggleActions: "restart reverse restart reverse",
+    // });
   }, []);
 
   return (

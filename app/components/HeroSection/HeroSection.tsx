@@ -71,8 +71,8 @@ export default function HeroSection() {
         <AsciiBackground
           ascii={ascii}
           height={150}
-          width={200}
-          blockSize={10}
+          width={210}
+          blockSize={15}
           xPosition="left-0"
           refs={bgRefs}
           animate={false}

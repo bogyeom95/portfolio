@@ -32,7 +32,9 @@ export default function EndSection() {
       start: "top center",
       animation: tl,
 
-      toggleActions: "restart reverse restart reverse",
+      // toggleActions:  onEnter, onLeave, onEnterBack, and onLeaveBack
+      // toggleActions: "restart complete restart complete",
+      // toggleActions: "restart reverse restart reverse",
     });
   });
 
