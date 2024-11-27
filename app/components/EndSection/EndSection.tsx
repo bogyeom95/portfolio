@@ -55,7 +55,7 @@ export default function EndSection() {
         </p>
         <a
           ref={aRef}
-          href="https://github.com/bokyum"
+          href="https://github.com/bogyeom95"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-6 flex justify-center items-center gap-3 py-3 bg-gray-700 hover:bg-gray-800 text-white text-lg rounded-lg shadow-lg"
