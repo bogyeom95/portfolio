@@ -31,7 +31,7 @@ export function animateSplitText(
   return tl;
 }
 
-export function animateHorizontal(horizontalRefs: (HTMLHRElement | null)[]) {
+export function animateHorizontal(horizontalRefs: HTMLHRElement[]) {
   const tl = gsap.timeline();
 
   tl.from(
@@ -47,7 +47,7 @@ export function animateHorizontal(horizontalRefs: (HTMLHRElement | null)[]) {
   return tl;
 }
 
-export function animateCards(cardRefs: (HTMLDivElement | null)[]) {
+export function animateCards(cardRefs: HTMLDivElement[]) {
   const tl = gsap.timeline();
   tl.from(
     cardRefs.filter((ref) => ref !== null),
@@ -65,7 +65,7 @@ export function animateCards(cardRefs: (HTMLDivElement | null)[]) {
 }
 
 export function animateAsciiBG(
-  refs: React.MutableRefObject<(HTMLDivElement | null)[]>,
+  refs: React.MutableRefObject<HTMLDivElement[]>,
   vars?: gsap.TweenVars
 ) {
   const defaultVars: gsap.TweenVars = {

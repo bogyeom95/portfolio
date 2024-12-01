@@ -18,14 +18,14 @@ import {
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 export default function AboutMeSection() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const titleRef = useRef<HTMLDivElement | null>(null);
-  const descriptionRef = useRef<HTMLParagraphElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
 
-  const cardContainerRef = useRef<HTMLDivElement | null>(null);
-  const cardTitleRef = useRef<HTMLDivElement | null>(null);
-  const cardContentRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const horizontalRefs = useRef<(HTMLHRElement | null)[]>([]);
+  const cardContainerRef = useRef<HTMLDivElement>(null);
+  const cardTitleRef = useRef<HTMLDivElement>(null);
+  const cardContentRefs = useRef<HTMLDivElement[]>([]);
+  const horizontalRefs = useRef<HTMLHRElement[]>([]);
 
   useGSAP(() => {
     const tl = gsap.timeline();
@@ -51,10 +51,6 @@ export default function AboutMeSection() {
       start: "top center",
       end: "bottom center",
       animation: tl,
-
-      // toggleActions:  onEnter, onLeave, onEnterBack, and onLeaveBack
-      // toggleActions: "restart complete restart complete",
-      // toggleActions: "restart reverse restart reverse",
     });
   }, []);
   return (

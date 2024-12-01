@@ -10,10 +10,10 @@ import { animateHeroTitle } from "./animations";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
-  const containerRef = React.useRef<HTMLElement | null>(null);
-  const titleRef = React.useRef<HTMLDivElement | null>(null);
-  const bgRefs = React.useRef<(HTMLDivElement | null)[]>([]);
-  const scrollHintRef = React.useRef<HTMLButtonElement | null>(null);
+  const containerRef = React.useRef<HTMLElement>(null);
+  const titleRef = React.useRef<HTMLDivElement>(null);
+  const bgRefs = React.useRef<HTMLDivElement[]>([]);
+  const scrollHintRef = React.useRef<HTMLButtonElement>(null);
   useGSAP(() => {
     const tl = gsap.timeline();
     tl.add(animateHeroTitle(titleRef));

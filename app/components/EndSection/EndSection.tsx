@@ -11,11 +11,11 @@ import { ascii } from "./ascii";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EndSection() {
-  const containerRef = React.useRef<HTMLDivElement | null>(null);
-  const titleRef = React.useRef<HTMLSpanElement | null>(null);
-  const descriptionRef = React.useRef<HTMLParagraphElement | null>(null);
-  const aRef = React.useRef<HTMLAnchorElement | null>(null);
-  const bgRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const titleRef = React.useRef<HTMLSpanElement>(null);
+  const descriptionRef = React.useRef<HTMLParagraphElement>(null);
+  const aRef = React.useRef<HTMLAnchorElement>(null);
+  const bgRefs = React.useRef<HTMLDivElement[]>([]);
 
   useGSAP(() => {
     const linkAnimation = gsap.timeline();

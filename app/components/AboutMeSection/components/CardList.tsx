@@ -3,7 +3,7 @@ import { AboutMeItem } from "../AboutMeSection";
 
 interface CardListProps {
   items: AboutMeItem[];
-  cardRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
+  cardRefs: React.MutableRefObject<HTMLDivElement[]>;
 }
 export default function CardList({ items, cardRefs }: CardListProps) {
   return (
@@ -15,7 +15,7 @@ export default function CardList({ items, cardRefs }: CardListProps) {
         <Card
           key={item.id}
           item={item}
-          ref={(el: HTMLDivElement | null) => {
+          ref={(el: HTMLDivElement) => {
             cardRefs.current[idx] = el;
           }}
         />

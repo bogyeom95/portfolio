@@ -6,7 +6,7 @@ export default function CareerList({
   cardRefs,
 }: {
   careers: CareerItem[];
-  cardRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
+  cardRefs: React.MutableRefObject<HTMLDivElement[]>;
 }) {
   return (
     <div className="space-y-4">
@@ -14,7 +14,7 @@ export default function CareerList({
         <Card
           key={career.id}
           career={career}
-          ref={(el: HTMLDivElement | null) => {
+          ref={(el: HTMLDivElement) => {
             cardRefs.current[idx] = el;
           }}
         />

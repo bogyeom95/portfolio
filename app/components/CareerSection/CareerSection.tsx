@@ -12,11 +12,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CareerList from "./components/CareerList";
 gsap.registerPlugin(ScrollTrigger);
 export default function CareerSection() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const titleRef = useRef<HTMLDivElement | null>(null);
-  const horizontalRefs = useRef<(HTMLHRElement | null)[]>([]);
-  const cardWrapperRef = useRef<HTMLDivElement | null>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const horizontalRefs = useRef<HTMLHRElement[]>([]);
+  const cardWrapperRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<HTMLDivElement[]>([]);
   useGSAP(() => {
     const tl = gsap.timeline();
 
@@ -29,23 +29,7 @@ export default function CareerSection() {
       start: "top center",
       end: "bottom center",
       animation: tl,
-
-      // toggleActions:  onEnter, onLeave, onEnterBack, and onLeaveBack
-      // toggleActions: "restart none none none",
-      // toggleActions: "restart reverse restart reverse",
     });
-
-    // ScrollTrigger.create({
-    //   trigger: cardWrapperRef.current,
-    //   start: "top center",
-    //   end: "bottom center",
-
-    //   animation: animateCards(cardRefs.current),
-
-    //   // toggleActions:  onEnter, onLeave, onEnterBack, and onLeaveBack
-    //   toggleActions: "restart complete restart complete",
-    //   // toggleActions: "restart reverse restart reverse",
-    // });
   }, []);
 
   return (

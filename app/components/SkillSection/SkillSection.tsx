@@ -17,11 +17,11 @@ import { ascii } from "./ascii";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function SkillSection() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const titleRef = useRef<HTMLDivElement | null>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const horizontalRefs = useRef<(HTMLHRElement | null)[]>([]);
-  const bgRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<HTMLDivElement[]>([]);
+  const horizontalRefs = useRef<HTMLHRElement[]>([]);
+  const bgRefs = useRef<HTMLDivElement[]>([]);
 
   useGSAP(() => {
     const tl = gsap.timeline();

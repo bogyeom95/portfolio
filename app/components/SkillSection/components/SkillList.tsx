@@ -6,7 +6,7 @@ export default function SkillList({
   cardRefs,
 }: {
   skills: Skills;
-  cardRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
+  cardRefs: React.MutableRefObject<HTMLDivElement[]>;
 }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
@@ -15,7 +15,7 @@ export default function SkillList({
           key={category}
           category={category}
           items={items}
-          ref={(el: HTMLDivElement | null) => {
+          ref={(el: HTMLDivElement) => {
             cardRefs.current[idx] = el;
           }}
         />

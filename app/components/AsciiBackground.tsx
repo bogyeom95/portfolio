@@ -55,7 +55,7 @@ function AsciiBackground({
   height: number;
   width: number;
   blockSize: number;
-  refs: React.MutableRefObject<(HTMLDivElement | null)[]>;
+  refs: React.MutableRefObject<HTMLDivElement[]>;
   xPosition?: string;
   animate?: boolean;
 }) {

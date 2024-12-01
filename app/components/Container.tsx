@@ -7,9 +7,9 @@ import AsciiBackground from "./AsciiBackground";
 import { ascii } from "./ascii";
 gsap.registerPlugin(ScrollTrigger);
 export default function Container({ children }: { children: ReactNode }) {
-  const bgRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const loadingRef = useRef<HTMLDivElement | null>(null);
-  const contentRef = useRef<HTMLDivElement | null>(null);
+  const bgRefs = useRef<HTMLDivElement[]>([]);
+  const loadingRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // 모바일 회전 이벤트 처리
