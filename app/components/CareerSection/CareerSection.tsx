@@ -29,6 +29,7 @@ export default function CareerSection() {
       start: "top center",
       end: "bottom center",
       animation: tl,
+      toggleActions: "restart none restart none",
     });
   }, []);
 

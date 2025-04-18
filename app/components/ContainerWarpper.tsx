@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Container from "./Container";
 import CareerSection from "./CareerSection/CareerSection";
 
@@ -12,6 +12,21 @@ export default function ContainerWarpper() {
   const aboutMeRef = useRef<HTMLDivElement>(null);
   const skillRef = useRef<HTMLDivElement>(null);
   const careerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // 모바일 회전 이벤트 처리
+
+    const refreshScrollTrigger = () => {
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+    };
+    window.scrollTo(0, 0);
+    window.addEventListener("orientationchange", refreshScrollTrigger);
+    return () => {
+      window.removeEventListener("orientationchange", refreshScrollTrigger);
+    };
+  }, []);
 
   const scrollToSection = (
     ref: React.RefObject<HTMLDivElement>,

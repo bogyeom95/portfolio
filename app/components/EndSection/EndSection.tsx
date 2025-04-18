@@ -31,17 +31,14 @@ export default function EndSection() {
       trigger: containerRef.current,
       start: "top center",
       animation: tl,
-
-      // toggleActions:  onEnter, onLeave, onEnterBack, and onLeaveBack
-      // toggleActions: "restart complete restart complete",
-      // toggleActions: "restart reverse restart reverse",
+      toggleActions: "restart none restart none",
     });
   });
 
   return (
     <section
       ref={containerRef}
-      className="relative w-screen h-screen bg-gradient-to-b from-slate-900 via-black to-slate-900 flex items-center justify-center "
+      className="relative w-screen h-screen  flex items-center justify-center "
     >
       <div className="text-center z-10">
         <span

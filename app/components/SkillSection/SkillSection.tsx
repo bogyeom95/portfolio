@@ -36,18 +36,13 @@ export default function SkillSection() {
       start: "top center",
       end: "bottom center",
       animation: tl,
-
+      toggleActions: "restart none restart none",
       // toggleActions:  onEnter, onLeave, onEnterBack, and onLeaveBack
-      // toggleActions: "restart complete restart complete",
-      // toggleActions: "restart reverse restart reverse",
     });
   }, []);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative w-screen h-screen  bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900  "
-    >
+    <section ref={containerRef} className="relative w-screen h-screen ">
       <div className="z-10  relative flex flex-col pt-16  gap-2 sm:gap-4  px-4 sm:p-20   ">
         <Horizontal
           ref={(el) => {

@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -11,21 +11,6 @@ export default function Container({ children }: { children: ReactNode }) {
   const loadingRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // 모바일 회전 이벤트 처리
-
-    const refreshScrollTrigger = () => {
-      setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 100);
-    };
-    window.scrollTo(0, 0);
-    window.addEventListener("orientationchange", refreshScrollTrigger);
-    return () => {
-      window.removeEventListener("orientationchange", refreshScrollTrigger);
-    };
-  }, []);
-
   useGSAP(() => {
     gsap.set(contentRef.current, { autoAlpha: 0, height: "100%" });
     const tl = gsap.timeline();
@@ -33,9 +18,11 @@ export default function Container({ children }: { children: ReactNode }) {
       duration: 1,
       color: "transparent",
       autoAlpha: 0,
-      display: "none",
+      onComplete: () => {
+        gsap.set(loadingRef.current, { display: "none" });
+      },
     }).to(contentRef.current, {
-      duration: 2,
+      duration: 1,
       autoAlpha: 1,
     });
   });
@@ -61,7 +48,7 @@ export default function Container({ children }: { children: ReactNode }) {
         >
           <div className="flex flex-col items-center">
             <div className="w-12 h-12 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
-            <p className="mt-4 text-xl font-semibold tracking-wide animate-pulse">
+            <p className="mt-4 text-xl font-semibold  animate-pulse">
               Loading...
             </p>
           </div>
