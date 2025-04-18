@@ -94,14 +94,17 @@ export type Skills = {
 
 const skills: Skills = {
   language: [
+    { name: "Java", bg: "bg-red-600", text: "text-white" },
     { name: "Typescript", bg: "bg-blue-700", text: "text-white" },
     { name: "JavaScript", bg: "bg-yellow-500", text: "text-black" },
-    { name: "Java", bg: "bg-red-600", text: "text-white" },
   ],
   frontend: [
     { name: "React", bg: "bg-blue-400", text: "text-white" },
     { name: "Next.js", bg: "bg-gray-900", text: "text-white" },
-    { name: "Bootstrap", bg: "bg-purple-600", text: "text-white" },
+
+    { name: "React Query", bg: "bg-red-500", text: "text-white" },
+    { name: "Context API", bg: "bg-blue-500", text: "text-white" },
+
     { name: "TailwindCSS", bg: "bg-teal-500", text: "text-white" },
     { name: "gsap", bg: "bg-green-500", text: "text-white" },
   ],
@@ -118,11 +121,20 @@ const skills: Skills = {
       bg: "bg-green-600",
       text: "text-white",
     },
+    { name: "Redis", bg: "bg-red-600", text: "text-white" },
   ],
+  messaging: [{ name: "RabbitMQ", bg: "bg-orange-500", text: "text-white" }],
   etc: [
     { name: "NCP", bg: "bg-green-800", text: "text-white" },
     { name: "AWS ", bg: "bg-orange-600", text: "text-white" },
+
     { name: "GitHub Actions", bg: "bg-purple-600", text: "text-white" },
+    { name: "Jenkins", bg: "bg-gray-700", text: "text-white" },
     { name: "Docker", bg: "bg-blue-600", text: "text-white" },
+
+    { name: "Nginx", bg: "bg-green-500", text: "text-white" },
+
+    { name: "Postman", bg: "bg-orange-400", text: "text-white" },
+    { name: "Swagger", bg: "bg-yellow-300", text: "text-black" },
   ],
 };

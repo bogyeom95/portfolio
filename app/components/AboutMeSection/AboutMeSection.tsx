@@ -80,9 +80,9 @@ export default function AboutMeSection() {
           ref={descriptionRef}
           className="text-sm sm:text-lg lg:text-xl  text-slate-300"
         >
-          복잡한 문제를 간단히 해결하는 데 집중하며,
+          Java, TypeScript를 기반으로 풀스택 개발 경험을 쌓아 왔으며,
           <br />
-          현재 프론트엔드 개발에 깊은 관심을 가진 개발자입니다.
+          현재는 쿠버네티스 기반 인프라 환경 구축에 많은 관심을 가지고 있습니다.
         </div>
         <Horizontal
           ref={(el) => {
