@@ -48,8 +48,8 @@ export default function AboutMeSection() {
 
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top center",
-      end: "bottom center",
+      start: "top 80%",
+      end: "bottom 20%",
       animation: tl,
       toggleActions: "restart none restart none",
     });
@@ -148,7 +148,7 @@ const aboutMeItems: AboutMeItem[] = [
     id: 5,
     icon: <FaPencil className="text-slate-100" />,
     title: "학력",
-    description: "강원대학교 졸업(컴퓨터과학과)",
+    description: "강원대학교 졸업 (컴퓨터과학과)",
   },
   {
     id: 6,

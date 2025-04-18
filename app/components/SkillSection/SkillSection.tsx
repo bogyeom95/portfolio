@@ -33,8 +33,8 @@ export default function SkillSection() {
 
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top center",
-      end: "bottom center",
+      start: "top 80%",
+      end: "bottom 20%",
       animation: tl,
       toggleActions: "restart none restart none",
       // toggleActions:  onEnter, onLeave, onEnterBack, and onLeaveBack

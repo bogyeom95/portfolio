@@ -16,8 +16,7 @@ export default function HeroSection() {
 
   useGSAP(() => {
     const tl = gsap.timeline();
-    tl.add(animateHeroTitle(titleRef));
-    tl.add(
+    tl.add(animateHeroTitle(titleRef)).add(
       animateAsciiBG(bgRefs, {
         scale: 0,
         opacity: 0,
@@ -27,7 +26,8 @@ export default function HeroSection() {
           each: 0.01,
           from: "center",
         },
-      })
+      }),
+      1
     );
   });
 

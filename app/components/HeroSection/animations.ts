@@ -19,7 +19,7 @@ export function animateHeroTitle(titleRef: React.RefObject<HTMLElement>) {
         each: 0.1,
         from: "edges",
       },
-      delay: 1.5,
+      delay: 1,
     });
   }
   return tl;

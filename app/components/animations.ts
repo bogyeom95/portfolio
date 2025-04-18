@@ -54,9 +54,10 @@ export function animateCards(cardRefs: HTMLDivElement[]) {
     {
       y: 30,
       opacity: 0,
+      duration: 1,
 
       stagger: {
-        each: 0.05,
+        each: 0.1,
         ease: "power3.inOut",
       },
     }
