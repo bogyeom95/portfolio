@@ -35,14 +35,14 @@ export default function AboutMeSection() {
         animateSplitText(descriptionRef, {
           y: 10,
           duration: 0.3,
+          ease: "power3.inOut",
           stagger: {
             each: 0.03,
-            ease: "linear",
           },
         }),
         0
       )
-      .add(animateContainer(cardContainerRef), "-=0.3")
+      .add(animateContainer(cardContainerRef), 0)
       .add(animateSplitText(cardTitleRef, { y: 10 }))
       .add(animateCards(cardContentRefs.current), "<");
 
@@ -148,7 +148,7 @@ const aboutMeItems: AboutMeItem[] = [
     id: 5,
     icon: <FaPencil className="text-slate-100" />,
     title: "학력",
-    description: "강원대학교 (컴퓨터과학과)",
+    description: "강원대학교 졸업(컴퓨터과학과)",
   },
   {
     id: 6,

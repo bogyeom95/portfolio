@@ -21,7 +21,6 @@ export default function ContainerWarpper() {
         ScrollTrigger.refresh();
       }, 100);
     };
-    window.scrollTo(0, 0);
     window.addEventListener("orientationchange", refreshScrollTrigger);
     return () => {
       window.removeEventListener("orientationchange", refreshScrollTrigger);
